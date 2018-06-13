@@ -1,0 +1,35 @@
+
+CREATE OR REPLACE VIEW SUBCATCHMENT AS
+
+	SELECT 	null                   AS subc_id,
+          null                   AS node_id,
+          null                   AS rg_id,
+          CAST(null AS NUMBER)   AS area,
+          CAST(null AS NUMBER)   AS imperv,
+          CAST(null AS NUMBER)   AS width,
+          CAST(null AS NUMBER)   AS slope,
+          CAST(null AS NUMBER)   AS clength,
+          null                   AS snow_id,
+          CAST(null AS NUMBER)   AS nimp,
+          CAST(null AS NUMBER)   AS nperv,
+          CAST(null AS NUMBER)   AS simp,
+          CAST(null AS NUMBER)   AS sperv,
+          CAST(null AS NUMBER)   AS zero,
+          null                   AS routeto,
+          CAST(null AS NUMBER)   AS rted,
+          CAST(null AS NUMBER)   AS maxrate,
+          CAST(null AS NUMBER)   AS minrate,
+          CAST(null AS NUMBER)   AS decay,
+          CAST(null AS NUMBER)   AS drytime,
+          CAST(null AS NUMBER)   AS maxinfil,
+          CAST(null AS NUMBER)   AS suction,
+          CAST(null AS NUMBER)   AS conduct,
+          CAST(null AS NUMBER)   AS initdef,
+          CAST(null AS NUMBER)   AS curveno,
+          CAST(null AS NUMBER)   AS conduct_2,
+          CAST(null AS NUMBER)   AS drytime_2,
+          CAST(null AS INTEGER)  AS sector_id,
+          CAST(null AS INTEGER)  AS hydrology_id,
+          null                   AS the_geom          
+	FROM   	DUAL
+  WHERE   1 = 2;
