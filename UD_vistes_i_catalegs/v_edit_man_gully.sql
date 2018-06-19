@@ -188,12 +188,12 @@ CREATE OR REPLACE FORCE VIEW GW_MIGRA_NETSANEA.tmp_v_edit_man_gully_reixa AS
     'true'                                      AS INVENTORY,
     'false'                                     AS UNCERTAIN,
     1                                           AS expl_id,
-    T1.AMPLE                                    AS num_value
+    T1.AMPLE/100                                AS num_value
   FROM NS_MATARO.CL_V_REIXA T1
   		LEFT JOIN NS_MATARO.CL3_T_REIXA T2 ON T1.ID_REIXA = T2.ID_REIXA
       LEFT JOIN NS_MATARO.CL_T_NODE T3 ON T1.ID_NODE = T3.ID_NODE
       LEFT JOIN NS_MATARO.CL_T_TRAM T4 ON T1.ID_TRAM = T4.ID_TRAM
-      LEFT JOIN TMP_CAT_GRATE T5 ON T1.REI_FAB || '_' || T1.REI_TIP || '_' || T1.REI_MAT || '_' || T1.ALT  || '_' || T1.LLARGADA = T5.id_clau;
+      LEFT JOIN TMP_CAT_GRATE T5 ON T1.REI_FAB || '_' || T1.REI_TIP || '_' || T1.REI_MAT || '_' || T1.ALT  || '_' || CASE WHEN LLARGADA=0 THEN T1.AMPLE ELSE T1.LLARGADA END = T5.id_clau;
 
 
 CREATE OR REPLACE FORCE VIEW GW_MIGRA_NETSANEA.v_edit_man_gully AS
