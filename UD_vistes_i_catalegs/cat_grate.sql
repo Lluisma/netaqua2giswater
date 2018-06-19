@@ -1,5 +1,5 @@
 
---CREATE OR REPLACE VIEW TMP_CAT_GRATE AS 
+CREATE OR REPLACE VIEW TMP_CAT_GRATE AS 
   SELECT DISTINCT
          SET_GRATE_BRAND( REI_FAB )
          ||
@@ -52,7 +52,7 @@
         REI_FAB || '_' || REI_TIP || '_' || REI_MAT || '_' || REI_ALT  || '_' || REI_AMP AS id_clau,
         REI_AMP, REI_ALT
   FROM NS_MATARO.CL_V_EMBORNAL
-/*  
+  
   UNION
   
   SELECT DISTINCT
@@ -71,6 +71,8 @@
         END
         ||
         CASE
+          WHEN LLARGADA=0 AND AMPLE<1000 THEN LPAD(AMPLE,3,'0')
+          WHEN LLARGADA=0 THEN TO_CHAR(AMPLE)
           WHEN LLARGADA<1000 THEN LPAD(LLARGADA,3,'0')
           ELSE TO_CHAR(LLARGADA)
         END
@@ -100,8 +102,13 @@
           WHEN '-' THEN null
           ELSE REI_MAT
         END                                 AS rei_mat, 
-        REI_FAB || '_' || REI_TIP || '_' || REI_MAT || '_' || ALT  || '_' || LLARGADA AS id_clau,
-        LLARGADA, ALT
+
+        REI_FAB || '_' || REI_TIP || '_' || REI_MAT || '_' || ALT  || '_' || CASE WHEN LLARGADA=0 THEN AMPLE ELSE LLARGADA END AS id_clau,
+        CASE 
+          WHEN LLARGADA=0 THEN AMPLE
+          ELSE LLARGADA
+        END                                 AS LLARGADA,
+        ALT
   FROM NS_MATARO.CL_V_REIXA;
 
 
@@ -138,4 +145,3 @@ CREATE OR REPLACE VIEW CAT_GRATE AS
          'true'                        AS active
   FROM TMP_CAT_GRATE
   ORDER BY 1;
-*/
