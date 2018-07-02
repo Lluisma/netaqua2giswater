@@ -7,11 +7,11 @@ CREATE OR REPLACE VIEW TMP_CAT_NODE_HIDRANT AS
 	       'HIDRANT'                            NODETYPE_ID,
 	       null                                 MATCAT_ID,
 	       null                                 PNOM,
-	       null                                 DNOM,
+	       TO_CHAR(DIAMETRE)                    DNOM,
 	       DIAMETRE                             DINT,
 	       null                                 DEXT,
 	       null                                 SHAPE,
-	       'Hidrant ' || SUBSTR(T2.BOCAINC_TIPUS, 4) || ' Ã˜' || DIAMETRE || ' mm'  DESCRIPT,
+	       'Hidrant ' || SUBSTR(T2.BOCAINC_TIPUS, 4) || ' Ø' || DIAMETRE || ' mm'  DESCRIPT,
 	       null                                 LINK,
 	       T2.BOCAINC_TIPUS_MARCA               BRAND,
 	       null                                 MODEL,
@@ -28,11 +28,11 @@ CREATE OR REPLACE VIEW TMP_CAT_NODE_HIDRANT AS
 	       'HIDRANT'                            NODETYPE_ID,
 	       null                                 MATCAT_ID,
 	       null                                 PNOM,
-	       null                                 DNOM,
+	       TO_CHAR(DIAMETRE)                    DNOM,
 	       DIAMETRE                             DINT,
 	       null                                 DEXT,
 	       null                                 SHAPE,
-	       'Hidrant ' || SUBSTR(T2.BOCAINC_TIPUS, 4) || ' Ã˜' || DIAMETRE || ' mm'  DESCRIPT,
+	       'Hidrant ' || SUBSTR(T2.BOCAINC_TIPUS, 4) || ' Ø' || DIAMETRE || ' mm'  DESCRIPT,
 		   null                                 LINK,
 	       T2.BOCAINC_TIPUS_MARCA               BRAND,
 	       null                                 MODEL,
@@ -49,11 +49,11 @@ CREATE OR REPLACE VIEW TMP_CAT_NODE_HIDRANT AS
 	       'HIDRANT'                            NODETYPE_ID,
 	       null                                 MATCAT_ID,
 	       null                                 PNOM,
-	       null                                 DNOM,
+	       TO_CHAR(DIAMETRE)                    DNOM,
 	       DIAMETRE                             DINT,
 	       null                                 DEXT,
 	       null                                 SHAPE,
-	       'Hidrant ' || SUBSTR(T2.BOCAINC_TIPUS, 4) || ' Ã˜' || DIAMETRE || ' mm'  DESCRIPT,
+	       'Hidrant ' || SUBSTR(T2.BOCAINC_TIPUS, 4) || ' Ø' || DIAMETRE || ' mm'  DESCRIPT,
 	       null                                 LINK,
 	       T2.BOCAINC_TIPUS_MARCA               BRAND,
 	       null                                 MODEL,
@@ -112,7 +112,7 @@ CREATE OR REPLACE VIEW TMP_CAT_NODE_ALTRES AS
 	       null                       DINT,
 	       null                       DEXT,
 	       null                       SHAPE,
-	       'UniÃ³ - Antiga derivaciÃ³'  DESCRIPT,
+	       'Unió - Antiga derivació'  DESCRIPT,
 	       null                       LINK,
 	       null                       BRAND,
 	       null                       MODEL,
@@ -124,32 +124,32 @@ CREATE OR REPLACE VIEW TMP_CAT_NODE_ALTRES AS
 	FROM DUAL
 	UNION
 	SELECT 'UNIO_TRAM', 'UNIO', null, null, null, null, null, null,
-	       'UniÃ³ - UniÃ³ de tram', null, null, null, null, null, null, null, 'true'
+	       'Unió - Unió de tram', null, null, null, null, null, null, null, 'true'
 	FROM DUAL
 	UNION
 	SELECT 'UNIO_SEP', 'UNIO', null, null, null, null, null, null,
-	       'UniÃ³ - Separador de material', null, null, null, null, null, null, null, 'true'
+	       'Unió - Separador de material', null, null, null, null, null, null, null, 'true'
 	FROM DUAL
 	UNION
 	SELECT 'UNIO_VIRTUAL', 'UNIO', null, null, null, null, null, null,
-	       'UniÃ³ - UniÃ³ virtual / Desconegut', null, null, null, null, null, null, null, 'true'
+	       'Unió - Unió virtual / Desconegut', null, null, null, null, null, null, null, 'true'
 	FROM DUAL
 	UNION
 	SELECT 'DERI_COLLARI', 'DERIVACIO', null, null, null, null, null, null,
-	       'DerivaciÃ³ - CollarÃ­ / Tram en cÃ rrega', null, null, null, null, null, null, null, 'true'
+	       'Derivació - Collarí / Tram en cÃ rrega', null, null, null, null, null, null, null, 'true'
 	FROM DUAL
 	UNION
 	SELECT 'DERI_ABRA', 'DERIVACIO', null, null, null, null, null, null,
-	       'DerivaciÃ³ - Te abraÃ§adera', null, null, null, null, null, null, null, 'true'
+	       'Derivació - Te abraçadera', null, null, null, null, null, null, null, 'true'
 	FROM DUAL
 	UNION
 	SELECT 'DERI_VIRTUAL', 'DERIVACIO', null, null, null, null, null, null,
-	       'DerivaciÃ³ - DerivaciÃ³ virtual', null, null, null, null, null, null, null, 'true'
+	       'Derivació - Derivació virtual', null, null, null, null, null, null, null, 'true'
 	FROM DUAL
 	UNIO
 	UNION
 	SELECT 'DERI_TE', 'DERIVACIO', null, null, null, null, null, null,
-	       'DerivaciÃ³ - Te', null, null, null, null, null, null, null, 'true'
+	       'Derivació - Te', null, null, null, null, null, null, null, 'true'
 	FROM DUAL
 	UNIO
 	UNION
@@ -168,7 +168,7 @@ CREATE OR REPLACE VIEW TMP_CAT_NODE_ALTRES AS
 	FROM DUAL
 	UNION
 	SELECT 'PCON_XX', 'POU_CONN', null, null, null, null, null, null,
-	       'Pou de connexiÃ³', null, null, null, null, null, null, null, 'true'
+	       'Pou de connexió', null, null, null, null, null, null, null, 'true'
 	FROM DUAL
 	UNION
 	SELECT 'BOMB_XX', 'BOMBAMENT', null, null, null, null, null, null,
@@ -176,11 +176,11 @@ CREATE OR REPLACE VIEW TMP_CAT_NODE_ALTRES AS
 	FROM DUAL
 	UNION
 	SELECT 'CAPT_XX', 'CAPTACIO', null, null, null, null, null, null,
-	       'CaptaciÃ³', null, null, null, null, null, null, null, 'true'
+	       'Captació', null, null, null, null, null, null, null, 'true'
 	FROM DUAL
 	UNION
 	SELECT 'DIPO_XX', 'DIPOSIT', null, null, null, null, null, null,
-	       'DipÃ²sit', null, null, null, null, null, null, null, 'true'
+	       'Dipòsit', null, null, null, null, null, null, null, 'true'
 	FROM DUAL
 	UNION
 	SELECT 'POU_XX', 'POU', null, null, null, null, null, null,
@@ -188,7 +188,7 @@ CREATE OR REPLACE VIEW TMP_CAT_NODE_ALTRES AS
 	FROM DUAL
 	UNION
 	SELECT 'REDU_XX', 'REDUCCIO', null, null, null, null, null, null,
-	       'ReducciÃ³', null, null, null, null, null, null, null, 'true'
+	       'Reducció', null, null, null, null, null, null, null, 'true'
 	FROM DUAL
 	ORDER BY 2, 1;
 
@@ -213,8 +213,8 @@ CREATE OR REPLACE VIEW TMP_CAT_NODE_COMP AS
 	       null                       DEXT,
 	       null                       SHAPE,
 	       CASE 
-	         WHEN DIAMETRE > 0 THEN 'Comptador ' || TRIM(INITCAP(MARCA) || ' ' || TRIM(CODI_FAB || ' Ã˜' || DIAMETRE)) || ' mm'
-	         ELSE 'Comptador ' || TRIM(TRIM(INITCAP(MARCA) || ' ' || CODI_FAB) || ' Ã˜ desconegut')
+	         WHEN DIAMETRE > 0 THEN 'Comptador ' || TRIM(INITCAP(MARCA) || ' ' || TRIM(CODI_FAB || ' Ø' || DIAMETRE)) || ' mm'
+	         ELSE 'Comptador ' || TRIM(TRIM(INITCAP(MARCA) || ' ' || CODI_FAB) || ' Ø desconegut')
 	       END                        DESCRIPT,
 	       null                       LINK,
 	       INITCAP(MARCA)             BRAND,
@@ -234,7 +234,7 @@ CREATE OR REPLACE VIEW TMP_CAT_NODE_COMP AS
 	       null,
 	       null,
 	       null,
-	       'Comptador ' || TRIM(TRIM(INITCAP(MARCA) || ' ' || CODI_FAB) || ' Ã˜ desconegut'),
+	       'Comptador ' || TRIM(TRIM(INITCAP(MARCA) || ' ' || CODI_FAB) || ' Ø desconegut'),
 	       null,
 	       INITCAP(MARCA),
 	       UPPER(REPLACE(TRIM(CODI_FAB), ' ', '_')),
@@ -253,7 +253,7 @@ CREATE OR REPLACE VIEW TMP_CAT_NODE_COMP AS
 	       null,
 	       null,
 	       null,
-	       'Comptador ' || TRIM(TRIM(INITCAP(MARCA) || ' ' || CODI_FAB) || ' Ã˜ desconegut'),
+	       'Comptador ' || TRIM(TRIM(INITCAP(MARCA) || ' ' || CODI_FAB) || ' Ø desconegut'),
 	       null,
 	       INITCAP(MARCA),
 	       UPPER(REPLACE(TRIM(CODI_FAB), ' ', '_')),
@@ -289,9 +289,9 @@ CREATE OR REPLACE VIEW TMP_CAT_NODE_VENTOSA AS
 		   null                                 SHAPE,
 		   CASE
 		     WHEN (DIAMETRE = 0 OR DIAMETRE IS NULL) AND TIPUS = 'XX' THEN 'Ventosa - No coneguda'
-             WHEN DIAMETRE >0 AND TIPUS = 'XX' THEN 'Ventosa Ã˜' || DIAMETRE || ' mm'
-		     WHEN DIAMETRE > 0 THEN 'Ventosa ' ||  TRIM(SUBSTR(T2.VENTOSA_TIPUS, INSTR(T2.VENTOSA_TIPUS,' - ')+3) || ' Ã˜' || DIAMETRE || ' mm')
-		     ELSE 'Ventosa ' ||  TRIM(SUBSTR(T2.VENTOSA_TIPUS, INSTR(T2.VENTOSA_TIPUS,' - ')+3) || ' Ã˜ desconegut')  
+             WHEN DIAMETRE >0 AND TIPUS = 'XX' THEN 'Ventosa Ø' || DIAMETRE || ' mm'
+		     WHEN DIAMETRE > 0 THEN 'Ventosa ' ||  TRIM(SUBSTR(T2.VENTOSA_TIPUS, INSTR(T2.VENTOSA_TIPUS,' - ')+3) || ' Ø' || DIAMETRE || ' mm')
+		     ELSE 'Ventosa ' ||  TRIM(SUBSTR(T2.VENTOSA_TIPUS, INSTR(T2.VENTOSA_TIPUS,' - ')+3) || ' Ø desconegut')  
 		   END                                  DESCRIPT,
 		   null                                 LINK,
 		   T2.VENTOSA_TIPUS_MARCA               BRAND,
@@ -325,9 +325,9 @@ CREATE OR REPLACE VIEW TMP_CAT_NODE_VENTOSA AS
 		   null,
 		   CASE
 		     WHEN (DIAMETRE = 0 OR DIAMETRE IS NULL) AND TIPUS = 'XX' THEN 'Ventosa - No coneguda'
-             WHEN DIAMETRE >0 AND TIPUS = 'XX' THEN 'Ventosa Ã˜' || DIAMETRE || ' mm'
-		     WHEN DIAMETRE > 0 THEN 'Ventosa ' ||  TRIM(SUBSTR(T2.VENTOSA_TIPUS, INSTR(T2.VENTOSA_TIPUS,' - ')+3) || ' Ã˜' || DIAMETRE || ' mm')
-		     ELSE 'Ventosa ' ||  TRIM(SUBSTR(T2.VENTOSA_TIPUS, INSTR(T2.VENTOSA_TIPUS,' - ')+3) || ' Ã˜ desconegut')  
+             WHEN DIAMETRE >0 AND TIPUS = 'XX' THEN 'Ventosa Ø' || DIAMETRE || ' mm'
+		     WHEN DIAMETRE > 0 THEN 'Ventosa ' ||  TRIM(SUBSTR(T2.VENTOSA_TIPUS, INSTR(T2.VENTOSA_TIPUS,' - ')+3) || ' Ø' || DIAMETRE || ' mm')
+		     ELSE 'Ventosa ' ||  TRIM(SUBSTR(T2.VENTOSA_TIPUS, INSTR(T2.VENTOSA_TIPUS,' - ')+3) || ' Ø desconegut')  
 		   END,
 		   null,
 		   T2.VENTOSA_TIPUS_MARCA,
@@ -361,9 +361,9 @@ CREATE OR REPLACE VIEW TMP_CAT_NODE_VENTOSA AS
 		   null,
 		   CASE
 		     WHEN (DIAMETRE = 0 OR DIAMETRE IS NULL) AND TIPUS = 'XX' THEN 'Ventosa - No coneguda'
-             WHEN DIAMETRE >0 AND TIPUS = 'XX' THEN 'Ventosa Ã˜' || DIAMETRE || ' mm'
-		     WHEN DIAMETRE > 0 THEN 'Ventosa ' ||  TRIM(SUBSTR(T2.VENTOSA_TIPUS, INSTR(T2.VENTOSA_TIPUS,' - ')+3) || ' Ã˜' || DIAMETRE || ' mm')
-		     ELSE 'Ventosa ' ||  TRIM(SUBSTR(T2.VENTOSA_TIPUS, INSTR(T2.VENTOSA_TIPUS,' - ')+3) || ' Ã˜ desconegut')  
+             WHEN DIAMETRE >0 AND TIPUS = 'XX' THEN 'Ventosa Ø' || DIAMETRE || ' mm'
+		     WHEN DIAMETRE > 0 THEN 'Ventosa ' ||  TRIM(SUBSTR(T2.VENTOSA_TIPUS, INSTR(T2.VENTOSA_TIPUS,' - ')+3) || ' Ø' || DIAMETRE || ' mm')
+		     ELSE 'Ventosa ' ||  TRIM(SUBSTR(T2.VENTOSA_TIPUS, INSTR(T2.VENTOSA_TIPUS,' - ')+3) || ' Ø desconegut')  
 		   END,
 		   null,
 		   T2.VENTOSA_TIPUS_MARCA,
@@ -401,9 +401,9 @@ CREATE OR REPLACE VIEW TMP_CAT_NODE_VDESCARREGA AS
 	       null                                   DEXT,
 	       null                                   SHAPE,
 	       CASE
-			 WHEN (DIAMETRE = 0 OR DIAMETRE IS NULL) AND TIPUS = 'X-XX' THEN 'V. de DescÃ rrega Desconeguda'
-             WHEN (DIAMETRE = 0 OR DIAMETRE IS NULL) THEN 'V. de DescÃ rrega ' ||  TRIM(SUBSTR(T2.VALVULA_TIPUS, INSTR(T2.VALVULA_TIPUS,' - ')+3) || ' Ã˜ desconegut')
-             ELSE 'V. de DescÃ rrega ' ||  TRIM(SUBSTR(T2.VALVULA_TIPUS, INSTR(T2.VALVULA_TIPUS,' - ')+3) || ' Ã˜' || DIAMETRE || ' mm')
+			 WHEN (DIAMETRE = 0 OR DIAMETRE IS NULL) AND TIPUS = 'X-XX' THEN 'V. de Descàrrega Desconeguda'
+             WHEN (DIAMETRE = 0 OR DIAMETRE IS NULL) THEN 'V. de Descàrrega ' ||  TRIM(SUBSTR(T2.VALVULA_TIPUS, INSTR(T2.VALVULA_TIPUS,' - ')+3) || ' Ø desconegut')
+             ELSE 'V. de Descàrrega ' ||  TRIM(SUBSTR(T2.VALVULA_TIPUS, INSTR(T2.VALVULA_TIPUS,' - ')+3) || ' Ø' || DIAMETRE || ' mm')
 	       END                                    DESCRIPT,
 	       null                                   LINK,
 	       T2.VALVULA_TIPUS_MARCA                 BRAND,
@@ -437,9 +437,9 @@ CREATE OR REPLACE VIEW TMP_CAT_NODE_VDESCARREGA AS
 	       null,
 	       null,
 	       CASE
-	         WHEN (DIAMETRE = 0 OR DIAMETRE IS NULL) AND TIPUS = 'X-XX' THEN 'V. de DescÃ rrega Desconeguda'
-	         WHEN (DIAMETRE = 0 OR DIAMETRE IS NULL) THEN 'V. de DescÃ rrega ' ||  TRIM(SUBSTR(T2.VALVULA_TIPUS, INSTR(T2.VALVULA_TIPUS,' - ')+3) || ' Ã˜ desconegut')
-	         ELSE 'V. de DescÃ rrega ' ||  TRIM(SUBSTR(T2.VALVULA_TIPUS, INSTR(T2.VALVULA_TIPUS,' - ')+3) || ' Ã˜' || DIAMETRE || ' mm')
+	         WHEN (DIAMETRE = 0 OR DIAMETRE IS NULL) AND TIPUS = 'X-XX' THEN 'V. de Descàrrega Desconeguda'
+	         WHEN (DIAMETRE = 0 OR DIAMETRE IS NULL) THEN 'V. de Descàrrega ' ||  TRIM(SUBSTR(T2.VALVULA_TIPUS, INSTR(T2.VALVULA_TIPUS,' - ')+3) || ' Ø desconegut')
+	         ELSE 'V. de Descàrrega ' ||  TRIM(SUBSTR(T2.VALVULA_TIPUS, INSTR(T2.VALVULA_TIPUS,' - ')+3) || ' Ø' || DIAMETRE || ' mm')
 	       END,
 	       null,
 	       T2.VALVULA_TIPUS_MARCA,
@@ -473,9 +473,9 @@ CREATE OR REPLACE VIEW TMP_CAT_NODE_VDESCARREGA AS
 	       null,
 	       null,
 	       CASE
-	         WHEN (DIAMETRE = 0 OR DIAMETRE IS NULL) AND TIPUS = 'X-XX' THEN 'V. de DescÃ rrega Desconeguda'
-	         WHEN (DIAMETRE = 0 OR DIAMETRE IS NULL) THEN 'V. de DescÃ rrega ' ||  TRIM(SUBSTR(T2.VALVULA_TIPUS, INSTR(T2.VALVULA_TIPUS,' - ')+3) || ' Ã˜ desconegut')
-	         ELSE 'V. de DescÃ rrega ' ||  TRIM(SUBSTR(T2.VALVULA_TIPUS, INSTR(T2.VALVULA_TIPUS,' - ')+3) || ' Ã˜' || DIAMETRE || ' mm')
+	         WHEN (DIAMETRE = 0 OR DIAMETRE IS NULL) AND TIPUS = 'X-XX' THEN 'V. de Descàrrega Desconeguda'
+	         WHEN (DIAMETRE = 0 OR DIAMETRE IS NULL) THEN 'V. de Descàrrega ' ||  TRIM(SUBSTR(T2.VALVULA_TIPUS, INSTR(T2.VALVULA_TIPUS,' - ')+3) || ' Ø desconegut')
+	         ELSE 'V. de Descàrrega ' ||  TRIM(SUBSTR(T2.VALVULA_TIPUS, INSTR(T2.VALVULA_TIPUS,' - ')+3) || ' Ø' || DIAMETRE || ' mm')
 	       END,
 	       null,
 	       T2.VALVULA_TIPUS_MARCA,
@@ -515,10 +515,10 @@ CREATE OR REPLACE VIEW TMP_CAT_NODE_VALVULA AS
 	       null                                   DEXT,
 	       null                                   SHAPE,
 	       CASE
-			 WHEN (TIPUS = 'X-XX' OR TIPUS IS NULL) AND (DIAMETRE = 0 OR DIAMETRE IS NULL) THEN 'VÃ lvula Desconeguda'
-			 WHEN (TIPUS = 'X-XX' OR TIPUS IS NULL) THEN 'VÃ lvula Desconeguda Ã˜' || DIAMETRE || ' mm'
-	         WHEN (DIAMETRE = 0 OR DIAMETRE IS NULL) THEN 'VÃ lvula ' ||  TRIM(SUBSTR(T2.VALVULA_TIPUS, INSTR(T2.VALVULA_TIPUS,' - ')+3) || ' Ã˜ desconegut')
-	         ELSE 'VÃ lvula ' ||  TRIM(SUBSTR(T2.VALVULA_TIPUS, INSTR(T2.VALVULA_TIPUS,' - ')+3) || ' Ã˜' || DIAMETRE || ' mm')
+			 WHEN (TIPUS = 'X-XX' OR TIPUS IS NULL) AND (DIAMETRE = 0 OR DIAMETRE IS NULL) THEN 'Vàlvula Desconeguda'
+			 WHEN (TIPUS = 'X-XX' OR TIPUS IS NULL) THEN 'Vàlvula Desconeguda Ø' || DIAMETRE || ' mm'
+	         WHEN (DIAMETRE = 0 OR DIAMETRE IS NULL) THEN 'Vàlvula ' ||  TRIM(SUBSTR(T2.VALVULA_TIPUS, INSTR(T2.VALVULA_TIPUS,' - ')+3) || ' Ø desconegut')
+	         ELSE 'Vàlvula ' ||  TRIM(SUBSTR(T2.VALVULA_TIPUS, INSTR(T2.VALVULA_TIPUS,' - ')+3) || ' Ø' || DIAMETRE || ' mm')
 		     END                                  DESCRIPT,
 	       null                                   LINK,
 	       T2.VALVULA_TIPUS_MARCA                 BRAND,
@@ -553,10 +553,10 @@ CREATE OR REPLACE VIEW TMP_CAT_NODE_VALVULA AS
 	       null,
 	       null,
 	       CASE
-			 WHEN (TIPUS = 'X-XX' OR TIPUS IS NULL) AND (DIAMETRE = 0 OR DIAMETRE IS NULL) THEN 'VÃ lvula Desconeguda'
-			 WHEN (TIPUS = 'X-XX' OR TIPUS IS NULL) THEN 'VÃ lvula Desconeguda Ã˜' || DIAMETRE || ' mm'
-	         WHEN (DIAMETRE = 0 OR DIAMETRE IS NULL) THEN 'VÃ lvula ' ||  TRIM(SUBSTR(T2.VALVULA_TIPUS, INSTR(T2.VALVULA_TIPUS,' - ')+3) || ' Ã˜ desconegut')
-	         ELSE 'VÃ lvula ' ||  TRIM(SUBSTR(T2.VALVULA_TIPUS, INSTR(T2.VALVULA_TIPUS,' - ')+3) || ' Ã˜' || DIAMETRE || ' mm')
+			 WHEN (TIPUS = 'X-XX' OR TIPUS IS NULL) AND (DIAMETRE = 0 OR DIAMETRE IS NULL) THEN 'Vàlvula Desconeguda'
+			 WHEN (TIPUS = 'X-XX' OR TIPUS IS NULL) THEN 'Vàlvula Desconeguda Ø' || DIAMETRE || ' mm'
+	         WHEN (DIAMETRE = 0 OR DIAMETRE IS NULL) THEN 'Vàlvula ' ||  TRIM(SUBSTR(T2.VALVULA_TIPUS, INSTR(T2.VALVULA_TIPUS,' - ')+3) || ' Ø desconegut')
+	         ELSE 'Vàlvula ' ||  TRIM(SUBSTR(T2.VALVULA_TIPUS, INSTR(T2.VALVULA_TIPUS,' - ')+3) || ' Ø' || DIAMETRE || ' mm')
 		     END,
 	       null,
 	       T2.VALVULA_TIPUS_MARCA,
@@ -591,10 +591,10 @@ CREATE OR REPLACE VIEW TMP_CAT_NODE_VALVULA AS
 	       null,
 	       null,
 	       CASE
-			 WHEN (TIPUS = 'X-XX' OR TIPUS IS NULL) AND (DIAMETRE = 0 OR DIAMETRE IS NULL) THEN 'VÃ lvula Desconeguda'
-			 WHEN (TIPUS = 'X-XX' OR TIPUS IS NULL) THEN 'VÃ lvula Desconeguda Ã˜' || DIAMETRE || ' mm'
-	         WHEN (DIAMETRE = 0 OR DIAMETRE IS NULL) THEN 'VÃ lvula ' ||  TRIM(SUBSTR(T2.VALVULA_TIPUS, INSTR(T2.VALVULA_TIPUS,' - ')+3) || ' Ã˜ desconegut')
-	         ELSE 'VÃ lvula ' ||  TRIM(SUBSTR(T2.VALVULA_TIPUS, INSTR(T2.VALVULA_TIPUS,' - ')+3) || ' Ã˜' || DIAMETRE || ' mm')
+			 WHEN (TIPUS = 'X-XX' OR TIPUS IS NULL) AND (DIAMETRE = 0 OR DIAMETRE IS NULL) THEN 'Vàlvula Desconeguda'
+			 WHEN (TIPUS = 'X-XX' OR TIPUS IS NULL) THEN 'Vàlvula Desconeguda Ø' || DIAMETRE || ' mm'
+	         WHEN (DIAMETRE = 0 OR DIAMETRE IS NULL) THEN 'Vàlvula ' ||  TRIM(SUBSTR(T2.VALVULA_TIPUS, INSTR(T2.VALVULA_TIPUS,' - ')+3) || ' Ø desconegut')
+	         ELSE 'Vàlvula ' ||  TRIM(SUBSTR(T2.VALVULA_TIPUS, INSTR(T2.VALVULA_TIPUS,' - ')+3) || ' Ø' || DIAMETRE || ' mm')
 		     END,
 	       null,
 	       T2.VALVULA_TIPUS_MARCA,
@@ -630,10 +630,10 @@ CREATE OR REPLACE VIEW TMP_CAT_NODE_VALVULA AS
 	       null                                   DEXT,
 	       null                                   SHAPE,
 	       CASE
-			 WHEN (T1.VALVULA = 'X-XX' OR T1.VALVULA IS NULL) AND (DIAMETREVAL = 0 OR DIAMETREVAL IS NULL) THEN 'VÃ lvula Desconeguda'
-			 WHEN (T1.VALVULA = 'X-XX' OR T1.VALVULA IS NULL) THEN 'VÃ lvula Desconeguda Ã˜' || DIAMETREVAL || ' mm'
-	         WHEN (DIAMETREVAL = 0 OR DIAMETREVAL IS NULL) THEN 'VÃ lvula ' ||  TRIM(SUBSTR(T2.VALVULA_TIPUS, INSTR(T2.VALVULA_TIPUS,' - ')+3) || ' Ã˜ desconegut')
-	         ELSE 'VÃ lvula ' ||  TRIM(SUBSTR(T2.VALVULA_TIPUS, INSTR(T2.VALVULA_TIPUS,' - ')+3) || ' Ã˜' || DIAMETREVAL || ' mm')
+			 WHEN (T1.VALVULA = 'X-XX' OR T1.VALVULA IS NULL) AND (DIAMETREVAL = 0 OR DIAMETREVAL IS NULL) THEN 'Vàlvula Desconeguda'
+			 WHEN (T1.VALVULA = 'X-XX' OR T1.VALVULA IS NULL) THEN 'Vàlvula Desconeguda Ø' || DIAMETREVAL || ' mm'
+	         WHEN (DIAMETREVAL = 0 OR DIAMETREVAL IS NULL) THEN 'Vàlvula ' ||  TRIM(SUBSTR(T2.VALVULA_TIPUS, INSTR(T2.VALVULA_TIPUS,' - ')+3) || ' Ø desconegut')
+	         ELSE 'Vàlvula ' ||  TRIM(SUBSTR(T2.VALVULA_TIPUS, INSTR(T2.VALVULA_TIPUS,' - ')+3) || ' Ø' || DIAMETREVAL || ' mm')
 		     END                                  DESCRIPT,
 	       null                                   LINK,
 	       T2.VALVULA_TIPUS_MARCA                 BRAND,
@@ -668,10 +668,10 @@ CREATE OR REPLACE VIEW TMP_CAT_NODE_VALVULA AS
 	       null                                   DEXT,
 	       null                                   SHAPE,
 	       CASE
-			 WHEN (T1.VALVULA = 'X-XX' OR T1.VALVULA IS NULL) AND (DIAMETREVAL = 0 OR DIAMETREVAL IS NULL) THEN 'VÃ lvula Desconeguda'
-			 WHEN (T1.VALVULA = 'X-XX' OR T1.VALVULA IS NULL) THEN 'VÃ lvula Desconeguda Ã˜' || DIAMETREVAL || ' mm'
-	         WHEN (DIAMETREVAL = 0 OR DIAMETREVAL IS NULL) THEN 'VÃ lvula ' ||  TRIM(SUBSTR(T2.VALVULA_TIPUS, INSTR(T2.VALVULA_TIPUS,' - ')+3) || ' Ã˜ desconegut')
-	         ELSE 'VÃ lvula ' ||  TRIM(SUBSTR(T2.VALVULA_TIPUS, INSTR(T2.VALVULA_TIPUS,' - ')+3) || ' Ã˜' || DIAMETREVAL || ' mm')
+			 WHEN (T1.VALVULA = 'X-XX' OR T1.VALVULA IS NULL) AND (DIAMETREVAL = 0 OR DIAMETREVAL IS NULL) THEN 'Vàlvula Desconeguda'
+			 WHEN (T1.VALVULA = 'X-XX' OR T1.VALVULA IS NULL) THEN 'Vàlvula Desconeguda Ø' || DIAMETREVAL || ' mm'
+	         WHEN (DIAMETREVAL = 0 OR DIAMETREVAL IS NULL) THEN 'Vàlvula ' ||  TRIM(SUBSTR(T2.VALVULA_TIPUS, INSTR(T2.VALVULA_TIPUS,' - ')+3) || ' Ø desconegut')
+	         ELSE 'Vàlvula ' ||  TRIM(SUBSTR(T2.VALVULA_TIPUS, INSTR(T2.VALVULA_TIPUS,' - ')+3) || ' Ø' || DIAMETREVAL || ' mm')
 		     END                                  DESCRIPT,
 	       null                                   LINK,
 	       T2.VALVULA_TIPUS_MARCA                 BRAND,
@@ -711,11 +711,11 @@ CREATE OR REPLACE VIEW TMP_CAT_NODE_VREGULADORA AS
 	       null                                   SHAPE,
 	       CASE
 	         WHEN DIAMETRE > 0 THEN 'V. Reguladora ' || TRIM(TRIM(SUBSTR(T3.DESCR_VR_MARCA, INSTR(T3.DESCR_VR_MARCA,' - ')+3)) || ' ' || 
-	                                TRIM(SUBSTR(T4.DESCR_VR_MODEL, INSTR(T4.DESCR_VR_MODEL,' - ')+3))) || ' Ã˜' ||  DIAMETRE || ' mm' 
+	                                TRIM(SUBSTR(T4.DESCR_VR_MODEL, INSTR(T4.DESCR_VR_MODEL,' - ')+3))) || ' Ø' ||  DIAMETRE || ' mm' 
 	         WHEN MODEL = 'RO' THEN 'V. Reguladora ' || TRIM(SUBSTR(T3.DESCR_VR_MARCA, INSTR(T3.DESCR_VR_MARCA,' - ')+3)) || ' ' || 
-	                                ' Ã˜' ||  DIAMETRE || ' mm' 
+	                                ' Ø' ||  DIAMETRE || ' mm' 
 	         ELSE 'V. Reguladora ' || TRIM(TRIM(SUBSTR(T3.DESCR_VR_MARCA, INSTR(T3.DESCR_VR_MARCA,' - ')+3)) || ' ' || 
-	                                TRIM(SUBSTR(T4.DESCR_VR_MODEL, INSTR(T4.DESCR_VR_MODEL,' - ')+3))) || ' DiÃ metre desconegut' 
+	                                TRIM(SUBSTR(T4.DESCR_VR_MODEL, INSTR(T4.DESCR_VR_MODEL,' - ')+3))) || ' Diàmetre desconegut' 
 	       END                                    DESCRIPT,
 	       null                                   LINK,
 	       TRIM(SUBSTR(T3.DESCR_VR_MARCA, INSTR(T3.DESCR_VR_MARCA,' - ')+3)) BRAND,
@@ -751,8 +751,8 @@ CREATE OR REPLACE VIEW TMP_CAT_NODE_VREGULADORA AS
 	       null,
 	       null,
 	       CASE
-	         WHEN DIAMETRE > 0 THEN 'V. Reguladora ' || TRIM(SUBSTR(T2.VALVULA_TIPUS_MARCA, INSTR(T2.VALVULA_TIPUS_MARCA,' - ')+3)) || ' Ã˜' ||  DIAMETRE || ' mm' 
-	         ELSE 'V. Reguladora ' || TRIM(SUBSTR(T2.VALVULA_TIPUS_MARCA, INSTR(T2.VALVULA_TIPUS_MARCA,' - ')+3)) || ' DiÃ metre desconegut' 
+	         WHEN DIAMETRE > 0 THEN 'V. Reguladora ' || TRIM(SUBSTR(T2.VALVULA_TIPUS_MARCA, INSTR(T2.VALVULA_TIPUS_MARCA,' - ')+3)) || ' Ø' ||  DIAMETRE || ' mm' 
+	         ELSE 'V. Reguladora ' || TRIM(SUBSTR(T2.VALVULA_TIPUS_MARCA, INSTR(T2.VALVULA_TIPUS_MARCA,' - ')+3)) || ' Diàmetre desconegut' 
 	       END,
 	       null,
 	       null,
@@ -786,8 +786,8 @@ CREATE OR REPLACE VIEW TMP_CAT_NODE_VREGULADORA AS
 	       null,
 	       null,
 	       CASE
-	         WHEN DIAMETRE > 0 THEN 'V. Reguladora ' || TRIM(SUBSTR(T2.VALVULA_TIPUS_MARCA, INSTR(T2.VALVULA_TIPUS_MARCA,' - ')+3)) || ' Ã˜' ||  DIAMETRE || ' mm' 
-	         ELSE 'V. Reguladora ' || TRIM(SUBSTR(T2.VALVULA_TIPUS_MARCA, INSTR(T2.VALVULA_TIPUS_MARCA,' - ')+3)) || ' DiÃ metre desconegut' 
+	         WHEN DIAMETRE > 0 THEN 'V. Reguladora ' || TRIM(SUBSTR(T2.VALVULA_TIPUS_MARCA, INSTR(T2.VALVULA_TIPUS_MARCA,' - ')+3)) || ' Ø' ||  DIAMETRE || ' mm' 
+	         ELSE 'V. Reguladora ' || TRIM(SUBSTR(T2.VALVULA_TIPUS_MARCA, INSTR(T2.VALVULA_TIPUS_MARCA,' - ')+3)) || ' Diàmetre desconegut' 
 	       END,
 	       null,
 	       null,
