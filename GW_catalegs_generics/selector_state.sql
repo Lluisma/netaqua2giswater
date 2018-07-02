@@ -13,4 +13,10 @@ CREATE OR REPLACE VIEW SELECTOR_STATE AS
     FROM DUAL
     UNION
     SELECT  4, 0, 'bgeoadmin'
+    FROM DUAL
+    UNION
+    SELECT  5, 1, 'amsainve'
+    FROM DUAL
+    UNION
+    SELECT  6, 0, 'amsainve'
     FROM DUAL;
