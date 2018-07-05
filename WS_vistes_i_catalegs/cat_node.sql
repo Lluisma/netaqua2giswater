@@ -204,8 +204,11 @@ CREATE OR REPLACE VIEW TMP_CAT_NODE_COMP AS
 	       END ID,
 	       'COMPTADOR'                NODETYPE_ID,
 	       null                       MATCAT_ID,
-	       null                       PNOM,
-	       null                       DNOM,
+	       null                       PNOM, 
+         CASE 
+	         WHEN DIAMETRE > 0 THEN TO_CHAR(DIAMETRE)
+	         ELSE null
+	       END                        DNOM,
 	       CASE 
 	         WHEN DIAMETRE > 0 THEN DIAMETRE
 	         ELSE null
@@ -278,7 +281,7 @@ CREATE OR REPLACE VIEW TMP_CAT_NODE_VENTOSA AS
 		   null                            	    MATCAT_ID,
 		   null                                 PNOM,
 		   CASE 
-		     WHEN DIAMETRE > 0 THEN DIAMETRE || ' mm'
+		     WHEN DIAMETRE > 0 THEN TO_CHAR(DIAMETRE)
 		     ELSE null
 		   END             	                    DNOM,
 		   CASE 
@@ -314,7 +317,7 @@ CREATE OR REPLACE VIEW TMP_CAT_NODE_VENTOSA AS
 		   null,
 		   null,
 		   CASE 
-		     WHEN DIAMETRE > 0 THEN DIAMETRE || ' mm'
+		     WHEN DIAMETRE > 0 THEN TO_CHAR(DIAMETRE)
 		     ELSE null
 		   END,
 		   CASE 
@@ -350,7 +353,7 @@ CREATE OR REPLACE VIEW TMP_CAT_NODE_VENTOSA AS
 		   null,
 		   null,
 		   CASE 
-		     WHEN DIAMETRE > 0 THEN DIAMETRE || ' mm'
+		     WHEN DIAMETRE > 0 THEN TO_CHAR(DIAMETRE)
 		     ELSE null
 		   END,
 		   CASE 
@@ -391,7 +394,7 @@ CREATE OR REPLACE VIEW TMP_CAT_NODE_VDESCARREGA AS
 	       null                                   MATCAT_ID,
 	       null                                   PNOM,
 		   CASE 
-		     WHEN DIAMETRE > 0 THEN DIAMETRE || ' mm'
+		     WHEN DIAMETRE > 0 THEN TO_CHAR(DIAMETRE)
 		     ELSE null
 		   END             	                      DNOM,
 		   CASE 
@@ -427,7 +430,7 @@ CREATE OR REPLACE VIEW TMP_CAT_NODE_VDESCARREGA AS
 	       null,
 	       null,
 		   CASE 
-		     WHEN DIAMETRE > 0 THEN DIAMETRE || ' mm'
+		     WHEN DIAMETRE > 0 THEN TO_CHAR(DIAMETRE)
 		     ELSE null
 		   END,
 		   CASE 
@@ -463,7 +466,7 @@ CREATE OR REPLACE VIEW TMP_CAT_NODE_VDESCARREGA AS
 	       null,
 	       null,
 		   CASE 
-		     WHEN DIAMETRE > 0 THEN DIAMETRE || ' mm'
+		     WHEN DIAMETRE > 0 THEN TO_CHAR(DIAMETRE)
 		     ELSE null
 		   END,
 		   CASE 
@@ -505,7 +508,7 @@ CREATE OR REPLACE VIEW TMP_CAT_NODE_VALVULA AS
 	       null                                   MATCAT_ID,
 	       null                                   PNOM,
 		   CASE 
-		     WHEN DIAMETRE > 0 THEN DIAMETRE || ' mm'
+		     WHEN DIAMETRE > 0 THEN TO_CHAR(DIAMETRE)
 		     ELSE null
 		   END             	                      DNOM,
 		   CASE 
@@ -543,7 +546,7 @@ CREATE OR REPLACE VIEW TMP_CAT_NODE_VALVULA AS
 	       null,
 	       null,
 		   CASE 
-		     WHEN DIAMETRE > 0 THEN DIAMETRE || ' mm'
+		     WHEN DIAMETRE > 0 THEN TO_CHAR(DIAMETRE)
 		     ELSE null
 		   END,
 		   CASE 
@@ -581,7 +584,7 @@ CREATE OR REPLACE VIEW TMP_CAT_NODE_VALVULA AS
 	       null,
 	       null,
 		   CASE 
-		     WHEN DIAMETRE > 0 THEN DIAMETRE || ' mm'
+		     WHEN DIAMETRE > 0 THEN TO_CHAR(DIAMETRE)
 		     ELSE null
 		   END,
 		   CASE 
@@ -658,7 +661,7 @@ CREATE OR REPLACE VIEW TMP_CAT_NODE_VALVULA AS
 	       null                                   MATCAT_ID,
 	       null                                   PNOM,
 		   CASE 
-		     WHEN DIAMETREVAL > 0 THEN DIAMETREVAL || ' mm'
+		     WHEN DIAMETREVAL > 0 THEN TO_CHAR(DIAMETRE)
 		     ELSE null
 		   END             	                      DNOM,
 		   CASE 
@@ -700,7 +703,7 @@ CREATE OR REPLACE VIEW TMP_CAT_NODE_VREGULADORA AS
 	       null                                   MATCAT_ID,
 	       null                                   PNOM,
 		   CASE 
-		     WHEN DIAMETRE > 0 THEN DIAMETRE || ' mm'
+		     WHEN DIAMETRE > 0 THEN TO_CHAR(DIAMETRE)
 		     ELSE null
 		   END             	                      DNOM,
 		   CASE 
@@ -741,7 +744,7 @@ CREATE OR REPLACE VIEW TMP_CAT_NODE_VREGULADORA AS
 	       null,
 	       null,
 		   CASE 
-		     WHEN DIAMETRE > 0 THEN DIAMETRE || ' mm'
+		     WHEN DIAMETRE > 0 THEN TO_CHAR(DIAMETRE)
 		     ELSE null
 		   END,
 		   CASE 
@@ -776,7 +779,7 @@ CREATE OR REPLACE VIEW TMP_CAT_NODE_VREGULADORA AS
 	       null,
 	       null,
 		   CASE 
-		     WHEN DIAMETRE > 0 THEN DIAMETRE || ' mm'
+		     WHEN DIAMETRE > 0 THEN TO_CHAR(DIAMETRE)
 		     ELSE null
 		   END,
 		   CASE 
