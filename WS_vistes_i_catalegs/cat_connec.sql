@@ -22,7 +22,7 @@ CREATE OR REPLACE VIEW TMP_CAT_CONNEC_WJOIN AS
          CASE
            WHEN T1.DIAMETRE=0 THEN NULL
            WHEN T1.DIAMETRE IS NULL THEN NULL
-           ELSE T1.DIAMETRE || ' mm'
+           ELSE TO_CHAR(T1.DIAMETRE)
          END                                 DNOM,
          CASE 
            WHEN T1.DIAMETRE=0 THEN NULL
@@ -78,7 +78,7 @@ CREATE OR REPLACE VIEW TMP_CAT_CONNEC_WJOIN AS
          CASE
            WHEN T1.DIAMETRE=0 THEN NULL
            WHEN T1.DIAMETRE IS NULL THEN NULL
-           ELSE T1.DIAMETRE || ' mm'
+           ELSE TO_CHAR(T1.DIAMETRE)
          END                                 DNOM,
          CASE 
            WHEN T1.DIAMETRE=0 THEN NULL
@@ -133,7 +133,7 @@ CREATE OR REPLACE VIEW TMP_CAT_CONNEC_WJOIN AS
          CASE
            WHEN T1.DIAMETRE=0 THEN NULL
            WHEN T1.DIAMETRE IS NULL THEN NULL
-           ELSE T1.DIAMETRE || ' mm'
+           ELSE TO_CHAR(T1.DIAMETRE)
          END                                 DNOM,
          CASE 
            WHEN T1.DIAMETRE=0 THEN NULL
@@ -317,7 +317,7 @@ CREATE OR REPLACE VIEW TMP_CAT_CONNEC_GREENTAP AS
          null                                MATCAT_ID,
          null                                PNOM,
          CASE
-           WHEN DIAMETRE > 0 AND DIAMETRE IS NOT NULL THEN T1.DIAMETRE || ' mm' 
+           WHEN DIAMETRE > 0 AND DIAMETRE IS NOT NULL THEN TO_CHAR(T1.DIAMETRE)
            ELSE null
          END                                 DNOM,
          CASE 
@@ -352,7 +352,7 @@ CREATE OR REPLACE VIEW TMP_CAT_CONNEC_GREENTAP AS
          null                                MATCAT_ID,
          null                                PNOM,
          CASE
-           WHEN DIAMETRE > 0 AND DIAMETRE IS NOT NULL THEN T1.DIAMETRE || ' mm' 
+           WHEN DIAMETRE > 0 AND DIAMETRE IS NOT NULL THEN TO_CHAR(T1.DIAMETRE) 
            ELSE null
          END                                 DNOM,
          CASE 
@@ -387,7 +387,7 @@ CREATE OR REPLACE VIEW TMP_CAT_CONNEC_GREENTAP AS
          null                                MATCAT_ID,
          null                                PNOM,
          CASE 
-           WHEN DIAMETRE > 0 AND DIAMETRE IS NOT NULL THEN T1.DIAMETRE || ' mm' 
+           WHEN DIAMETRE > 0 AND DIAMETRE IS NOT NULL THEN TO_CHAR(T1.DIAMETRE) 
            ELSE null
          END                                 DNOM,
          CASE 
@@ -425,7 +425,7 @@ CREATE OR REPLACE VIEW TMP_CAT_CONNEC_PUNTCAR AS
       	   THEN NULL
       	   ELSE TRIM(SUBSTR(T2.PCAR_MAT, INSTR(T2.PCAR_MAT,'PN')+2)) || ' atm'
     	   END 						                		 PNOM,
-         T1.DIAMETRE || ' mm'                DNOM,
+         TO_CHAR(T1.DIAMETRE)                DNOM,
          T1.DIAMETRE                         DINT,
          null                                DEXT,
          'P.Càrrega : ' || TRIM(SUBSTR(T2.PCAR_MAT, INSTR(T2.PCAR_MAT,' - ')+3)) || ' - Ø' || T1.DIAMETRE || ' mm'  DESCRIPT,
