@@ -22,5 +22,5 @@ CREATE OR REPLACE VIEW CONNEC_TYPE AS
 	SELECT	'ABEURADOR', 'TAP',      'man_tap',      'true', 'false', 'Abeurador',       null
 	FROM DUAL
 	UNION
-	SELECT	'ESCOMESA',  'WJOIN',    'man_wjoinp',   'true', 'false', 'Escomesa',        null
+	SELECT	'ESCOMESA',  'WJOIN',    'man_wjoin',    'true', 'false', 'Escomesa',        null
 	FROM DUAL;
