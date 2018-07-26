@@ -37,8 +37,8 @@ CREATE OR REPLACE VIEW GW_MIGRA_NETAQUA.ANL_MINCUT_CAT_TYPE AS
 
   SELECT CODI              AS "id", 
          CASE TANC_REAL
-           WHEN 'S' THEN 'true'
-           ELSE 'false'
+           WHEN 'S' THEN 'false'
+           ELSE 'true'
          END               AS virtual,
          TIPUS_TANCAMENT   AS descript
   FROM NA_MATARO.CAT_T_TIPUS_TANCAMENT
