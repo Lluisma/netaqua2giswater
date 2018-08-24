@@ -149,7 +149,11 @@ SELECT  T1.ID_TRAM                              arc_id,
         null                                    descript,
         '-'                                     link,
         null                                    verified,
-        T2.XY_GEO                               the_geom,
+        CASE 
+          WHEN T1.ESTAT = 'B'            THEN T3.XY_GEO
+          ELSE T2.XY_GEO
+        END                                     the_geom,
+
         null                                    undelete,        
         null                                    label_x,
         null                                    label_y,
@@ -161,6 +165,7 @@ SELECT  T1.ID_TRAM                              arc_id,
         CAST(null AS NUMBER)                    num_value
 FROM    NA_MATARO.NA_V_TRAM T1
           LEFT JOIN NA_MATARO.NA3_T_TRAM T2 ON T1.ID_TRAM = T2.ID_TRAM
+          LEFT JOIN NA_MATARO.NA3_T_TRAM_B T3 ON T1.ID_TRAM = T3.ID_TRAM
           LEFT JOIN NA_MATARO.CAT_T_MATERIAL T4 ON T1.ID_MATERIAL = T4.ID_MATERIAL
           LEFT JOIN NA_MATARO.CAT_T_SUBXARXA T5 ON T1.ID_SUBXARXA = T5.ID_SUBXARXA
           LEFT JOIN NA_MATARO.NA_V_NODE T6 ON T1.ID_NODE1 = T6.ID_NODE AND T1.TIPUS_NODE1 = 'NODE'
@@ -283,7 +288,10 @@ SELECT  T1.ID_TRAM                              arc_id,
         null                                    descript,
         '-'                                     link,
         null                                    verified,
-        T2.THE_GEOM                             the_geom,
+        CASE 
+          WHEN T1.ESTAT = 'B' THEN T3.THE_GEOM
+          ELSE T2.THE_GEOM
+        END                                     the_geom,
         null                                    undelete,        
         null                                    label_x,
         null                                    label_y,
@@ -295,6 +303,7 @@ SELECT  T1.ID_TRAM                              arc_id,
         CAST(null AS NUMBER)                    num_value
 FROM    NA_FIGARO.NA_V_TRAM T1
           LEFT JOIN FIGARO_NA3_T_TRAM T2 ON T1.ID_TRAM = T2.ID_TRAM
+          LEFT JOIN FIGARO_NA3_T_TRAM_B T3 ON T1.ID_TRAM = T3.ID_TRAM
           LEFT JOIN NA_FIGARO.CAT_T_MATERIAL T4 ON T1.ID_MATERIAL = T4.ID_MATERIAL
           LEFT JOIN NA_FIGARO.CAT_T_SUBXARXA T5 ON T1.ID_SUBXARXA = T5.ID_SUBXARXA
           LEFT JOIN NA_FIGARO.NA_V_NODE T6 ON T1.ID_NODE1 = T6.ID_NODE AND T1.TIPUS_NODE1 = 'NODE'
@@ -417,7 +426,10 @@ SELECT  T1.ID_TRAM                              arc_id,
         null                                    descript,
         '-'                                     link,
         null                                    verified,
-        T2.THE_GEOM                             the_geom,
+        CASE 
+          WHEN T1.ESTAT = 'B' THEN T3.THE_GEOM
+          ELSE T2.THE_GEOM
+        END                                     the_geom,
         null                                    undelete,        
         null                                    label_x,
         null                                    label_y,
@@ -429,6 +441,7 @@ SELECT  T1.ID_TRAM                              arc_id,
         CAST(null AS NUMBER)                    num_value
 FROM    NA_LLISSADEVALL.NA_V_TRAM T1
           LEFT JOIN LLISSA_NA3_T_TRAM T2 ON T1.ID_TRAM = T2.ID_TRAM
+          LEFT JOIN LLISSA_NA3_T_TRAM_B T3 ON T1.ID_TRAM = T3.ID_TRAM
           LEFT JOIN NA_LLISSADEVALL.CAT_T_MATERIAL T4 ON T1.ID_MATERIAL = T4.ID_MATERIAL
           LEFT JOIN NA_LLISSADEVALL.CAT_T_SUBXARXA T5 ON T1.ID_SUBXARXA = T5.ID_SUBXARXA
           LEFT JOIN NA_LLISSADEVALL.NA_V_NODE T6 ON T1.ID_NODE1 = T6.ID_NODE AND T1.TIPUS_NODE1 = 'NODE'
