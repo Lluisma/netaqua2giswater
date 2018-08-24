@@ -67,7 +67,7 @@ $$ LANGUAGE plpgsql;
 
 -- TAULES   ARC_TYPE / CONNECT_TYPE / NODE_TYPE / ELEMENT_*  +  EXPLOITATION / SECTOR / DMA / MACRODMA 
 -- MAN_ADDFIELDS_VALUE_TMP
--- CATÀLEGS CAT_* / MAN_TYPE_* / VALUE_* / EXT_* (EXCEPTE EXT_RTC_* / EXT_CAT_*)
+-- CATÀLEGS CAT_* / MAN_TYPE_* / VALUE_* 
 -- CATÀLEGS ESPECÍFICS AMSA_*
 
 CREATE OR REPLACE FUNCTION ws_migra.generate_catalogs( schema1 TEXT ) 
@@ -88,7 +88,7 @@ BEGIN
   WHERE  table_schema = schema1
     AND  (   table_name like 'cat_%'
           or table_name like 'element_%' 
-          or (table_name like 'ext_%' and table_name not like 'ext_rtc_%' and table_name not like 'ext_cat_%')
+          --or (table_name like 'ext_%' and table_name not like 'ext_rtc_%' and table_name not like 'ext_cat_%')
           or table_name like 'man_type_%' 
           or table_name like 'man_addfields_%' 
           or table_name like 'value_%' 
