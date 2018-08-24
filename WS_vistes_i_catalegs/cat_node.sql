@@ -623,7 +623,7 @@ CREATE OR REPLACE VIEW TMP_CAT_NODE_VALVULA AS
 	       null                                   MATCAT_ID,
 	       null                                   PNOM,
 		   CASE 
-		     WHEN DIAMETREVAL > 0 THEN DIAMETREVAL || ' mm'
+		     WHEN DIAMETREVAL > 0 THEN TO_CHAR(DIAMETREVAL)
 		     ELSE null
 		   END             	                      DNOM,
 		   CASE 
