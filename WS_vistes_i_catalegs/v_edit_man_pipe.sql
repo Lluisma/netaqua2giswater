@@ -150,9 +150,10 @@ SELECT  T1.ID_TRAM                              arc_id,
         '-'                                     link,
         null                                    verified,
         CASE 
-          WHEN T1.ESTAT = 'B' THEN T3.XY_GEO
-          WHEN T1.ID_SUBXARXA='TRAM_FS' THEN T3.XY_GEO       
-          WHEN T1.ID_SUBXARXA='PISPROV' THEN T3.XY_GEO       
+          WHEN T1.ESTAT = 'B'            THEN T3.XY_GEO
+          WHEN T1.ID_SUBXARXA='PISOBRES' THEN T3.XY_GEO       
+          WHEN T1.ID_SUBXARXA='PISPROV'  THEN T3.XY_GEO       
+          WHEN T1.ID_SUBXARXA='TRAM_FS'  THEN T3.XY_GEO       
           ELSE T2.XY_GEO
         END                                     the_geom,
         null                                    undelete,        
