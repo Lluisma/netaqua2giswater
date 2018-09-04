@@ -33,6 +33,8 @@ BEGIN
                 ' WHERE 1=2';
     EXECUTE sql_crea;
 
+    RAISE NOTICE USING MESSAGE = rec.table_name;
+
     compt := compt + 1;  
 
   END LOOP;
@@ -70,7 +72,7 @@ $$ LANGUAGE plpgsql;
 
 -- TAULES               ARC_TYPE / CONNECT_TYPE / GULLY_TYPE / NODE_TYPE / ELEMENT_*  +  EXPLOITATION / SECTOR / DMA / MACRODMA / PLAN_PSECTOR
 -- DADES ADDICIONALS    MAN_ADDFIELDS_*
--- CATÀLEGS             CAT_* / MAN_TYPE_* / VALUE_* / EXT_* (EXCEPTE EXT_RTC_* / EXT_CAT_*)
+-- CATÀLEGS             CAT_* / MAN_TYPE_* / VALUE_* / -- EXT_* (EXCEPTE EXT_RTC_* / EXT_CAT_*)
 -- CATÀLEGS ESPECÍFICS  AMSA_*
 
 CREATE OR REPLACE FUNCTION ud_migra.generate_catalogs( schema1 TEXT ) 
@@ -91,7 +93,7 @@ BEGIN
   WHERE  table_schema = schema1
     AND  (   table_name LIKE 'cat_%'
           OR table_name LIKE 'element_%' 
-          OR (table_name LIKE 'ext_%' and table_name not like 'ext_rtc_%' and table_name not like 'ext_cat_%')
+          --OR (table_name LIKE 'ext_%' and table_name not like 'ext_rtc_%' and table_name not like 'ext_cat_%')
           OR table_name LIKE 'man_type_%' 
           OR table_name LIKE 'man_addfields_%' 
           OR table_name LIKE 'value_%' 
@@ -107,6 +109,7 @@ BEGIN
                 ' AS SELECT * FROM ' || schema1 || '.' || rec.table_name || 
                 ' WHERE 1=2';
     EXECUTE sql_crea;
+    RAISE NOTICE USING MESSAGE = rec.table_name;
     compt := compt + 1;  
   END LOOP;
 
@@ -168,7 +171,7 @@ BEGIN
   --EXECUTE sql_alter;
 
 
-  RETURN (compt+2) || ' catàlegs generats';
+  RETURN (compt) || ' + 3 catàlegs generats';
 
 END
 $$ LANGUAGE plpgsql;
