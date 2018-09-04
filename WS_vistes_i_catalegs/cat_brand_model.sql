@@ -44,6 +44,15 @@ CREATE OR REPLACE VIEW CAT_BRAND_MODEL AS
   FROM    NA_LLISSADEVALL.CAT2_T_FONT_TIPUS T1
   WHERE   T1.ID_FONT_TIPUS <> 'MO'
   
+  UNION
+  
+  SELECT  'A', null, 'Alta', null       FROM DUAL
+  UNION
+  SELECT  'P', null, 'Principal', null  FROM DUAL
+  UNION
+  SELECT  'S', null, 'Secundària', null FROM DUAL
+  
+  
 	ORDER BY 2, 1;
 
 
