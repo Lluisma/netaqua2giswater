@@ -27,18 +27,18 @@ BEGIN
           'WHERE  id = 55 AND parameter = ''edit_enable_arc_nodes_update'' ';
 
 
-  -- MODIFICA EL TIPUS DE EXT_STREETAXIS DE LineString A MultiLineString I REFÀ LA VISTA V_EXT_EXTREETAXIS
-
-  EXECUTE 'DROP VIEW ' || schema  || '.v_ext_streetaxis';
-
-  EXECUTE 'ALTER TABLE ' || schema  || '.ext_streetaxis ALTER COLUMN the_geom SET DATA TYPE geometry(MultiLineString)';
-
-  sql_create := 'CREATE OR REPLACE VIEW ' || schema || '.v_ext_streetaxis AS ' ||
-                '  SELECT ext_streetaxis.id, ext_streetaxis.type, ext_streetaxis.name, ext_streetaxis.text, ext_streetaxis.the_geom, ' ||
-                '         ext_streetaxis.expl_id, ext_streetaxis.muni_id ' ||
-                '  FROM   ' || schema || '.selector_expl, ' || schema || '.ext_streetaxis ' ||
-                '  WHERE  ext_streetaxis.expl_id = selector_expl.expl_id AND selector_expl.cur_user = "current_user"()::text';
-  EXECUTE sql_create;
+--  -- MODIFICA EL TIPUS DE EXT_STREETAXIS DE LineString A MultiLineString I REFÀ LA VISTA V_EXT_EXTREETAXIS
+--
+--  EXECUTE 'DROP VIEW ' || schema  || '.v_ext_streetaxis';
+--
+--  EXECUTE 'ALTER TABLE ' || schema  || '.ext_streetaxis ALTER COLUMN the_geom SET DATA TYPE geometry(MultiLineString)';
+--
+--  sql_create := 'CREATE OR REPLACE VIEW ' || schema || '.v_ext_streetaxis AS ' ||
+--                '  SELECT ext_streetaxis.id, ext_streetaxis.type, ext_streetaxis.name, ext_streetaxis.text, ext_streetaxis.the_geom, ' ||
+--                '         ext_streetaxis.expl_id, ext_streetaxis.muni_id ' ||
+--                '  FROM   ' || schema || '.selector_expl, ' || schema || '.ext_streetaxis ' ||
+--                '  WHERE  ext_streetaxis.expl_id = selector_expl.expl_id AND selector_expl.cur_user = "current_user"()::text';
+--  EXECUTE sql_create;
 
     
   RETURN 'Triggers desactivats | config values | ext_streetaxis a MultiLineString';
