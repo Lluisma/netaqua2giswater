@@ -3,7 +3,10 @@ CREATE OR REPLACE VIEW TMP_V_EDIT_ELEMENT_TAPA AS
   
   SELECT  'TAPA_' || T1.ID_NODE                         AS element_id,
           'TAPA_' || T1.ID_NODE                         AS code,
-          CAST(T3."id" AS varchar2(50))                 AS elementcat_id,
+          CASE 
+            WHEN T3."id" IS NULL THEN 'TAPA_XX'
+            ELSE CAST(T3."id" AS varchar2(50))
+          END                                           AS elementcat_id,
           'TAPA'                                        AS elementtype_id,
           null                                          AS serial_number,
           SET_STATE( T1.ESTAT )                         AS STATE,
