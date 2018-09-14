@@ -637,7 +637,7 @@ BEGIN
     FROM   INFORMATION_SCHEMA.tables 
     WHERE  table_schema = schema1
       AND  table_name like 'v_edit_%'
-      AND  table_name NOT IN ('v_edit_dimensions','v_edit_element')
+      AND  table_name NOT IN ('v_edit_man_conduit','v_edit_dimensions','v_edit_element')
       AND  table_name NOT LIKE ('%_pol%')
   LOOP
     EXECUTE 'UPDATE ' || schema1 || '.' || rec.table_name || ' SET dma_id = 0';
