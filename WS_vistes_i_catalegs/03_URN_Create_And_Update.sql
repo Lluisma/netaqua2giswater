@@ -504,7 +504,7 @@ BEGIN
 
   sql_update := 'WITH rows AS ( '
              || '  UPDATE ' || schema1 || '.amsa_rev_t_hydrant '
-             || '     SET connec_id = ' || schema1 || '.amsa_urn.id_nou '
+             || '     SET node_id = ' || schema1 || '.amsa_urn.id_nou '
              || '  FROM   ' || schema1 || '.amsa_urn '
              || '  WHERE  CAST(' || schema1 || '.amsa_rev_t_hydrant.connec_id AS VARCHAR(16)) = ' || schema1 || '.amsa_urn.id_element '
              || '    AND  CAST(' || schema1 || '.amsa_rev_t_hydrant.code AS VARCHAR(16)) = ' || schema1 || '.amsa_urn.id_amsa '
@@ -518,9 +518,9 @@ BEGIN
 
   sql_update := 'WITH rows AS ( '
              || '  UPDATE ' || schema1 || '.amsa_rev_t_valve '
-             || '     SET connec_id = ' || schema1 || '.amsa_urn.id_nou '
+             || '     SET node_id = ' || schema1 || '.amsa_urn.id_nou '
              || '  FROM   ' || schema1 || '.amsa_urn '
-             || '  WHERE  CAST(' || schema1 || '.amsa_rev_t_valve.connec_id AS VARCHAR(16)) = ' || schema1 || '.amsa_urn.id_element '
+             || '  WHERE  CAST(' || schema1 || '.amsa_rev_t_valve.node_id AS VARCHAR(16)) = ' || schema1 || '.amsa_urn.id_element '
              || '    AND  CAST(' || schema1 || '.amsa_rev_t_valve.code AS VARCHAR(16)) = ' || schema1 || '.amsa_urn.id_amsa '
              || '    AND  ' || schema1 || '.amsa_rev_t_valve.expl_id = ' || schema1 || '.amsa_urn.expl_id '
              || '    AND  ' || schema1 || '.amsa_rev_t_valve.nodetype_id = ' || schema1 || '.amsa_urn.nodetype_id '
