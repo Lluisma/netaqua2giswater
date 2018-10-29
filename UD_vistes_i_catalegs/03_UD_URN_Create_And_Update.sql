@@ -377,7 +377,7 @@ BEGIN
              || '  WHERE  CAST(' || schema1 || '.amsa_rev_t_conduit.arc_id AS VARCHAR(16)) = ' || schema1 || '.amsa_urn.id_element '
              || '    AND  CAST(' || schema1 || '.amsa_rev_t_conduit.code AS VARCHAR(16)) = ' || schema1 || '.amsa_urn.id_amsa '
              || '    AND  ' || schema1 || '.amsa_rev_t_conduit.expl_id = ' || schema1 || '.amsa_urn.expl_id '
-             || '    AND  ' || schema1 || '.amsa_urn.nodetype_id = ''ESCOMESA'' '
+             || '    AND  ' || schema1 || '.amsa_urn.nodetype_id = ''TRAM'' '
              || '  RETURNING 1) '
              || 'SELECT count(*) FROM rows';
 
