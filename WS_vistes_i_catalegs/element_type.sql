@@ -14,5 +14,5 @@ CREATE OR REPLACE VIEW ELEMENT_TYPE AS
 	SELECT	'ARQUETA','true','true',null,null
 	FROM DUAL
 	UNION
-	SELECT	'PORTELLA','true','false',null,null
+	SELECT	'PORTELLA','true','true',null,null
 	FROM DUAL;
