@@ -44,7 +44,7 @@ CREATE OR REPLACE VIEW NODE_TYPE AS
 	SELECT 'POU_CONN',    'MANHOLE',   'JUNCTION', 'man_manhole',  'inp_junction',  'true', 'true', 2,    'false', 'Pou de Connexió',       null
 	FROM DUAL
 	UNION
-	SELECT 'POU',         'WATERWELL', 'JUNCTION', 'man_waterwell','inp_junction',  'true', 'true', 1,    'false', 'Pou',                   null
+	SELECT 'POU',         'WATERWELL', 'JUNCTION', 'man_waterwell','inp_junction',  'true', 'false', 1,    'false', 'Pou',                   null
 	FROM DUAL
 	UNION
 	SELECT 'REDUCCIO',    'REDUCTION', 'JUNCTION', 'man_reduction','inp_junction',  'true', 'true', 2,    'false', 'Reducció',              null
