@@ -36,12 +36,13 @@ CREATE OR REPLACE VIEW GW_MIGRA_NETAQUA.ANL_MINCUT_RESULT_CAT AS
           CAST( null AS VARCHAR2(16))           AS postcode,
           T1.CARR_CODI                          AS streetaxis_id,
           T1.NUMERO                             AS postnumber,
-          CASE T1.CAUSA
-            WHEN '1' THEN 'Fortuïta'
-            WHEN '2' THEN 'Provocada'
-            WHEN '3' THEN 'Programada'
-            ELSE '00_ERROR'
-          END                                   AS anl_cause,
+          --CASE T1.CAUSA
+          --  WHEN '1' THEN 'Fortuïta'
+          --  WHEN '2' THEN 'Provocada'
+          --  WHEN '3' THEN 'Programada'
+          --  ELSE '00_ERROR'
+          --END                                   AS anl_cause,
+          T1.CAUSA                              AS anl_cause,
           T1.DATA_RECEPCIO                      AS anl_tstamp,
           LOWER(T1.USU_ID_USUARI)               AS anl_user,
           T1.DESCRIPCIO                         AS anl_descript,
