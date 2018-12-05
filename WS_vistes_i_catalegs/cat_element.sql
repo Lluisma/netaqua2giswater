@@ -64,60 +64,6 @@ CREATE OR REPLACE VIEW TMP_CAT_ELEMENT_ARQUETA AS
 	FROM   NA_MATARO.CAT2_T_VALV_ARQUETA T1
 	UNION
 	SELECT DISTINCT 
-	       ID_VALV_ARQUETA                  id,
-	       'ARQUETA'                        elementtype_id,
-	       CASE 
-	         WHEN ID_VALV_ARQUETA = 'X-XX' THEN null
-	         ELSE 'FO'
-	       END                              matcat_id,
-	       --Camp GEOMETRY : Un descriptor de la geometria del element
-	       CASE
-	         WHEN SUBSTR(ID_VALV_ARQUETA,1,1)='R' THEN 'Arqueta ' || TRIM(SUBSTR(VALVULA_ARQUETA, INSTR(VALVULA_ARQUETA,' - ')+3))
-           WHEN SUBSTR(ID_VALV_ARQUETA,1,1)='Q' THEN 'Arqueta ' || TRIM(SUBSTR(VALVULA_ARQUETA, INSTR(VALVULA_ARQUETA,' - ')+3))
-           ELSE 'Arqueta'
-	       END                             geometry,
-	       CASE
-	         WHEN SUBSTR(ID_VALV_ARQUETA,1,1)='R' THEN 'Arqueta Foneria - ' || TRIM(SUBSTR(VALVULA_ARQUETA, INSTR(VALVULA_ARQUETA,' - ')+3))
-           WHEN SUBSTR(ID_VALV_ARQUETA,1,1)='Q' THEN 'Arqueta Foneria - ' || TRIM(SUBSTR(VALVULA_ARQUETA, INSTR(VALVULA_ARQUETA,' - ')+3))
-           WHEN ID_VALV_ARQUETA = 'X-XX' THEN 'Arqueta - ' || TRIM(SUBSTR(VALVULA_ARQUETA, INSTR(VALVULA_ARQUETA,' - ')+3))
-           ELSE 'Arqueta Foneria - ' || TRIM(SUBSTR(VALVULA_ARQUETA, INSTR(VALVULA_ARQUETA,' - ')+3))
-	       END                             descript,
-	       null                            link,
-	       VALVULA_ARQUETA_MARCA           brand,
-	       null                            type,
-	       null                            model,
-	       null                            svg,
-	       'true'                          active
-	FROM   NA_FIGARO.CAT2_T_VALV_ARQUETA T1
-	UNION
-	SELECT DISTINCT 
-	       ID_VALV_ARQUETA                  id,
-	       'ARQUETA'                        elementtype_id,
-	       CASE 
-	         WHEN ID_VALV_ARQUETA = 'X-XX' THEN null
-	         ELSE 'FO'
-	       END                              matcat_id,
-	       --Camp GEOMETRY : Un descriptor de la geometria del element
-	       CASE
-	         WHEN SUBSTR(ID_VALV_ARQUETA,1,1)='R' THEN 'Arqueta ' || TRIM(SUBSTR(VALVULA_ARQUETA, INSTR(VALVULA_ARQUETA,' - ')+3))
-             WHEN SUBSTR(ID_VALV_ARQUETA,1,1)='Q' THEN 'Arqueta ' || TRIM(SUBSTR(VALVULA_ARQUETA, INSTR(VALVULA_ARQUETA,' - ')+3))
-             ELSE 'Arqueta'
-	       END                             geometry,
-	       CASE
-	         WHEN SUBSTR(ID_VALV_ARQUETA,1,1)='R' THEN 'Arqueta Foneria - ' || TRIM(SUBSTR(VALVULA_ARQUETA, INSTR(VALVULA_ARQUETA,' - ')+3))
-           WHEN SUBSTR(ID_VALV_ARQUETA,1,1)='Q' THEN 'Arqueta Foneria - ' || TRIM(SUBSTR(VALVULA_ARQUETA, INSTR(VALVULA_ARQUETA,' - ')+3))
-           WHEN ID_VALV_ARQUETA = 'X-XX' THEN 'Arqueta - ' || TRIM(SUBSTR(VALVULA_ARQUETA, INSTR(VALVULA_ARQUETA,' - ')+3))
-           ELSE 'Arqueta Foneria - ' || TRIM(SUBSTR(VALVULA_ARQUETA, INSTR(VALVULA_ARQUETA,' - ')+3))
-	       END                             descript,
-	       null                            link,
-	       VALVULA_ARQUETA_MARCA           brand,
-	       null                            type,
-	       null                            model,
-	       null                            svg,
-	       'true'                          active
-	FROM   NA_LLISSADEVALL.CAT2_T_VALV_ARQUETA T1
-	UNION
-	SELECT DISTINCT 
 	       CASE 
 	         WHEN ARQUETA = 'X-XX' AND MAT_TAPA IS NULL THEN 'X-XX'
 	         WHEN ARQUETA = 'X-XX' AND MAT_TAPA = 'XX' THEN 'X-XX'
@@ -221,15 +167,7 @@ CREATE OR REPLACE VIEW REVI_CAT_ELEMENT AS
   UNION  
   SELECT ID_VDES, ARQUETA, 'MATARO_VDES'
   FROM NA_MATARO.NA_V_VDES
-  WHERE ARQUETA NOT IN (SELECT ID_VALV_ARQUETA FROM NA_MATARO.CAT2_T_VALV_ARQUETA)
-  UNION  
-  SELECT ID_VDES, ARQUETA, 'FIGARO_VDES'
-  FROM NA_FIGARO.NA_V_VDES
-  WHERE ARQUETA NOT IN (SELECT ID_VALV_ARQUETA FROM NA_FIGARO.CAT2_T_VALV_ARQUETA)
-  UNION
-  SELECT ID_VDES, ARQUETA, 'LLISSA_VDES'
-  FROM NA_LLISSADEVALL.NA_V_VDES
-  WHERE ARQUETA NOT IN (SELECT ID_VALV_ARQUETA FROM NA_LLISSADEVALL.CAT2_T_VALV_ARQUETA);
+  WHERE ARQUETA NOT IN (SELECT ID_VALV_ARQUETA FROM NA_MATARO.CAT2_T_VALV_ARQUETA);
 
 CREATE OR REPLACE VIEW REVI_CAT_ELEMENT_B AS
   SELECT ID_FONT, CODI_LAB, ARQ2_SECC, ARQ2_DIAM, ARQ2_AMP, ARQ2_ALT

@@ -69,7 +69,6 @@ CREATE OR REPLACE VIEW MAN_ADDFIELDS_PARAMETER AS
 
 
 --   select * FROM   NA_MATARO.na_t_caracteristica;
---   select * FROM   NA_llissadevall.na_t_caracteristica;
 		
 
 
@@ -96,19 +95,6 @@ CREATE OR REPLACE VIEW AMSA_CAT_PIPE_INV_TIPUS AS
     SELECT ID_TIPUS_INVERSIO 			id_inv_tipus, 
     	   TIPUS_INVERSIO 				value_inv_tipus 
    	FROM   NA_MATARO.CAT2_T_TIPUS_INVERSIO
-
-   	UNION
-
-   	SELECT ID_TIPUS_INVERSIO 			id_inv_tipus, 
-    	   TIPUS_INVERSIO 				value_inv_tipus 
-   	FROM   NA_FIGARO.CAT2_T_TIPUS_INVERSIO
-
-   	UNION
-
-   	SELECT ID_TIPUS_INVERSIO 			id_inv_tipus, 
-    	   TIPUS_INVERSIO 				value_inv_tipus 
-   	FROM   NA_LLISSADEVALL.CAT2_T_TIPUS_INVERSIO
-
    	ORDER BY ID_INV_TIPUS;
 
 

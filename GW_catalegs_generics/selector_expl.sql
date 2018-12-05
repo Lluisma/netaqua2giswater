@@ -9,28 +9,10 @@ CREATE OR REPLACE VIEW GW_MIGRA_NETAQUA.SELECTOR_EXPL AS
     	   'amsaadmin'  			AS cur_user
     FROM DUAL
     UNION
-    SELECT  2, 2, 'amsaadmin'
+    SELECT  2, 1, 'bgeoadmin'
     FROM DUAL
     UNION
-    SELECT  3, 3, 'amsaadmin'
-    FROM DUAL
-    UNION
-    SELECT  4, 1, 'bgeoadmin'
-    FROM DUAL
-    UNION
-    SELECT  5, 2, 'bgeoadmin'
-    FROM DUAL
-    UNION
-    SELECT  6, 3, 'bgeoadmin'
-    FROM DUAL
-    UNION
-    SELECT  7, 1, 'amsainve'
-    FROM DUAL
-    UNION
-    SELECT  8, 2, 'amsainve'
-    FROM DUAL
-    UNION
-    SELECT  9, 3, 'amsainve'
+    SELECT  3, 1, 'amsainve'
     FROM DUAL;
 
 

@@ -13,26 +13,6 @@ CREATE OR REPLACE VIEW GW_MIGRA_NETAQUA.EXT_STREETAXIS AS
          1                             MUNI_ID
   FROM   NA_MATARO.CAT_T_CARRER T1
            LEFT JOIN NA_MATARO.BASE_EIX_CARRER T2 ON T1.CODI = T2.CARRER_ID
-  UNION ALL
-  SELECT '081347_' || T1.CODI          ID,
-         T1.CODI                       CODE,
-         T1.TIPUS_VIA,
-         T1.NOM                        NAME,
-         T1.AUX,
-         NULL,
-         2                             EXPL_ID,
-         2
-  FROM   NA_FIGARO.CAT_T_CARRER T1
-  UNION ALL
-  SELECT '081081_' || T1.CODI          ID,
-         T1.CODI                       CODE,
-         T1.TIPUS_VIA,
-         T1.NOM                        NAME,
-         T1.AUX,
-         NULL,
-         3                             EXPL_ID,
-         3
-  FROM   NA_LLISSADEVALL.CAT_T_CARRER T1
   ORDER BY EXPL_ID, ID, NAME;
 
 

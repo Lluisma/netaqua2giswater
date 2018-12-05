@@ -1,8 +1,6 @@
        
 CREATE OR REPLACE VIEW V_EDIT_MAN_SOURCE AS
 
--- CAPT NO DEFINIT A NA_FIGARO / NA_LLISSADEVALL
-
   SELECT T1.ID_CAPT                     node_id,
          T1.ID_CAPT                     code,
          CAST(null AS NUMBER)           elevation,

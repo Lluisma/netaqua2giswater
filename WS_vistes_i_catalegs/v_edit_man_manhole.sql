@@ -1,8 +1,6 @@
          
 CREATE OR REPLACE VIEW V_EDIT_MAN_MANHOLE AS
 
--- PCON NO DEFINIT A NA_FIGARO / NA_LLISSADEVALL
-
   SELECT T1.ID_PCON                     node_id,
          T1.ID_PCON                     code,
          CAST(null AS NUMBER)           elevation,

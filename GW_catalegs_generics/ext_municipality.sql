@@ -4,26 +4,13 @@
 
 CREATE OR REPLACE VIEW GW_MIGRA_NETAQUA.EXT_MUNICIPALITY AS
 
-  	SELECT 1               AS muni_id,
-    	     'Mataró'        AS "name",
-        	 null		         AS observ,
-           SDO_GEOMETRY(2007, 25831, NULL, c.MUNICIPIS_GEO.SDO_ELEM_INFO, c.MUNICIPIS_GEO.SDO_ORDINATES) AS the_geom
+  	SELECT 1             AS muni_id,
+    	    'MatarÃ³' 	    AS "name",
+        	null		       AS observ,
+          SDO_GEOMETRY(2007, 25831, NULL, c.MUNICIPIS_GEO.SDO_ELEM_INFO, c.MUNICIPIS_GEO.SDO_ORDINATES) AS the_geom
   	FROM   NA_MATARO.BASE_MUNICIPIS c
     WHERE  MUNICIPIS_ID = '081213'
-
-  UNION ALL
-
-  	SELECT 2, 'Figaró-Montmany', null, SDO_GEOMETRY(2007, 25831, NULL, c.MUNICIPIS_GEO.SDO_ELEM_INFO, c.MUNICIPIS_GEO.SDO_ORDINATES)
-  	FROM   NA_MATARO.BASE_MUNICIPIS c
-    WHERE  MUNICIPIS_ID = 'Figaró'
-
-  UNION ALL
-
-  	SELECT 3, 'Lliçà  de Vall', null, SDO_GEOMETRY(2007, 25831, NULL, c.MUNICIPIS_GEO.SDO_ELEM_INFO, c.MUNICIPIS_GEO.SDO_ORDINATES)
-   	FROM   NA_MATARO.BASE_MUNICIPIS c
-    WHERE  MUNICIPIS_ID = '081081'
-
-  ORDER BY 1;
+		ORDER BY 1;
   
 
 
@@ -32,9 +19,9 @@ CREATE OR REPLACE VIEW GW_MIGRA_NETAQUA.EXT_MUNICIPALITY AS
 CREATE OR REPLACE VIEW GW_MIGRA_NETSANEA.EXT_MUNICIPALITY AS
 
     SELECT 1               AS muni_id,
-           'Mataró'        AS "name",
-           null            AS observ,
-           SDO_GEOMETRY(2007, 25831, NULL, c.MUNICIPIS_GEO.SDO_ELEM_INFO, c.MUNICIPIS_GEO.SDO_ORDINATES) AS the_geom
+          'MatarÃ³'         AS "name",
+          null            AS observ,
+          SDO_GEOMETRY(2007, 25831, NULL, c.MUNICIPIS_GEO.SDO_ELEM_INFO, c.MUNICIPIS_GEO.SDO_ORDINATES) AS the_geom
     FROM   NA_MATARO.BASE_MUNICIPIS c
     WHERE  MUNICIPIS_ID = '081213';
     

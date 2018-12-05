@@ -22,48 +22,6 @@ CREATE OR REPLACE VIEW TMP_CAT_NODE_HIDRANT AS
 	       'true'                               ACTIVE
 	FROM   NA_MATARO.NA_V_BINC T1
 	         LEFT JOIN NA_MATARO.CAT2_T_BINC_TIPUS T2 ON T1.TIPUS = T2.ID_BINC_TIPUS
-	UNION
-	SELECT DISTINCT
-	      'HIDR_' || TIPUS || '_' || DIAMETRE   ID,
-	       'HIDRANT'                            NODETYPE_ID,
-	       null                                 MATCAT_ID,
-	       null                                 PNOM,
-	       TO_CHAR(DIAMETRE)                    DNOM,
-	       DIAMETRE                             DINT,
-	       null                                 DEXT,
-	       null                                 SHAPE,
-	       'Hidrant ' || SUBSTR(T2.BOCAINC_TIPUS, 4) || ' Ø' || DIAMETRE || ' mm'  DESCRIPT,
-		   null                                 LINK,
-	       T2.BOCAINC_TIPUS_MARCA               BRAND,
-	       null                                 MODEL,
-	       null                                 SVG,
-	       null                                 ESTIMATED_DEPTH,
-	       null                                 COST_UNIT,
-	       null                                 COST,
-	       'true'                               ACTIVE
-	FROM   NA_FIGARO.NA_V_BINC T1
-	         LEFT JOIN NA_FIGARO.CAT2_T_BINC_TIPUS T2 ON T1.TIPUS = T2.ID_BINC_TIPUS
-	UNION
-	SELECT DISTINCT
-	      'HIDR_' || TIPUS || '_' || DIAMETRE   ID,
-	       'HIDRANT'                            NODETYPE_ID,
-	       null                                 MATCAT_ID,
-	       null                                 PNOM,
-	       TO_CHAR(DIAMETRE)                    DNOM,
-	       DIAMETRE                             DINT,
-	       null                                 DEXT,
-	       null                                 SHAPE,
-	       'Hidrant ' || SUBSTR(T2.BOCAINC_TIPUS, 4) || ' Ø' || DIAMETRE || ' mm'  DESCRIPT,
-	       null                                 LINK,
-	       T2.BOCAINC_TIPUS_MARCA               BRAND,
-	       null                                 MODEL,
-	       null                                 SVG,
-	       null                                 ESTIMATED_DEPTH,
-	       null                                 COST_UNIT,
-	       null                                 COST,
-	       'true'                               ACTIVE
-	FROM   NA_LLISSADEVALL.NA_V_BINC T1
-	         LEFT JOIN NA_LLISSADEVALL.CAT2_T_BINC_TIPUS T2 ON T1.TIPUS = T2.ID_BINC_TIPUS
 	ORDER BY 1;
 
 
@@ -195,8 +153,6 @@ CREATE OR REPLACE VIEW TMP_CAT_NODE_ALTRES AS
 
 CREATE OR REPLACE VIEW TMP_CAT_NODE_COMP AS 
 
-	-- FIGARO I LLISSADEVALL NO TENEN INFORMAT EL CAMP DIAMETRE
-
 	SELECT DISTINCT 
 	       CASE 
 	         WHEN DIAMETRE > 0 THEN UPPER( TRIM('_' FROM REPLACE('COMP' || '_' || DIAMETRE || '_' || MARCA || '_' || CODI_FAB,' ','_')))
@@ -228,44 +184,6 @@ CREATE OR REPLACE VIEW TMP_CAT_NODE_COMP AS
 	       null                       COST,
 	       'true'                     ACTIVE
 	FROM   NA_MATARO.NA_V_COMP
-	UNION
-	SELECT DISTINCT UPPER(TRIM('_' FROM REPLACE('COMP' || '_XX_' || MARCA || '_' || CODI_FAB,' ','_'))),
-	       'COMPTADOR',
-	       null,
-	       null,
-	       null,
-	       null,
-	       null,
-	       null,
-	       'Comptador ' || TRIM(TRIM(INITCAP(MARCA) || ' ' || CODI_FAB) || ' Ø desconegut'),
-	       null,
-	       INITCAP(MARCA),
-	       UPPER(REPLACE(TRIM(CODI_FAB), ' ', '_')),
-	       null,
-	       null,
-	       null,
-	       null,
-	       'true'
-	FROM   NA_FIGARO.NA_V_COMP
-	UNION
-	SELECT DISTINCT UPPER(TRIM('_' FROM REPLACE('COMP' || '_XX_' || MARCA || '_' || CODI_FAB,' ','_'))),
-	       'COMPTADOR',
-	       null,
-	       null,
-	       null,
-	       null,
-	       null,
-	       null,
-	       'Comptador ' || TRIM(TRIM(INITCAP(MARCA) || ' ' || CODI_FAB) || ' Ø desconegut'),
-	       null,
-	       INITCAP(MARCA),
-	       UPPER(REPLACE(TRIM(CODI_FAB), ' ', '_')),
-	       null,
-	       null,
-	       null,
-	       null,
-	       'true'
-	FROM   NA_LLISSADEVALL.NA_V_COMP
 	ORDER BY 1;
 
 
@@ -306,78 +224,6 @@ CREATE OR REPLACE VIEW TMP_CAT_NODE_VENTOSA AS
 		   'true'                               ACTIVE
 	FROM   NA_MATARO.NA_V_VENT T1
     	     LEFT JOIN NA_MATARO.CAT2_T_VENT_TIPUS T2 ON T1.TIPUS = T2.ID_VENT_TIPUS
-    UNION
-    SELECT DISTINCT
-	       CASE 
-	         WHEN DIAMETRE > 0 THEN 'VENT_' || TIPUS || '_' || DIAMETRE
-	         WHEN (DIAMETRE = 0 OR DIAMETRE IS NULL) AND TIPUS = 'XX' THEN 'VENT_XX'
-       	     ELSE 'VENT_' || TIPUS || '_XX'
-       	   END,
-		   'VENTOSA',
-		   null,
-		   null,
-		   CASE 
-		     WHEN DIAMETRE > 0 THEN TO_CHAR(DIAMETRE)
-		     ELSE null
-		   END,
-		   CASE 
-		     WHEN DIAMETRE > 0 THEN DIAMETRE
-		     ELSE null
-		   END,
-		   null,
-		   null,
-		   CASE
-		     WHEN (DIAMETRE = 0 OR DIAMETRE IS NULL) AND TIPUS = 'XX' THEN 'Ventosa - No coneguda'
-             WHEN DIAMETRE >0 AND TIPUS = 'XX' THEN 'Ventosa Ø' || DIAMETRE || ' mm'
-		     WHEN DIAMETRE > 0 THEN 'Ventosa ' ||  TRIM(SUBSTR(T2.VENTOSA_TIPUS, INSTR(T2.VENTOSA_TIPUS,' - ')+3) || ' Ø' || DIAMETRE || ' mm')
-		     ELSE 'Ventosa ' ||  TRIM(SUBSTR(T2.VENTOSA_TIPUS, INSTR(T2.VENTOSA_TIPUS,' - ')+3) || ' Ø desconegut')  
-		   END,
-		   null,
-		   T2.VENTOSA_TIPUS_MARCA,
-		   null,
-		   null,
-		   null,
-		   null,
-		   null,
-		   'true'
-	FROM   NA_FIGARO.NA_V_VENT T1
-    	     LEFT JOIN NA_FIGARO.CAT2_T_VENT_TIPUS T2 ON T1.TIPUS = T2.ID_VENT_TIPUS
-	UNION
-	SELECT DISTINCT
-	       CASE 
-	         WHEN DIAMETRE > 0 THEN 'VENT_' || TIPUS || '_' || DIAMETRE
-	         WHEN (DIAMETRE = 0 OR DIAMETRE IS NULL) AND TIPUS = 'XX' THEN 'VENT_XX'
-       	     ELSE 'VENT_' || TIPUS || '_XX'
-       	   END,
-		   'VENTOSA',
-		   null,
-		   null,
-		   CASE 
-		     WHEN DIAMETRE > 0 THEN TO_CHAR(DIAMETRE)
-		     ELSE null
-		   END,
-		   CASE 
-		     WHEN DIAMETRE > 0 THEN DIAMETRE
-		     ELSE null
-		   END,
-		   null,
-		   null,
-		   CASE
-		     WHEN (DIAMETRE = 0 OR DIAMETRE IS NULL) AND TIPUS = 'XX' THEN 'Ventosa - No coneguda'
-             WHEN DIAMETRE >0 AND TIPUS = 'XX' THEN 'Ventosa Ø' || DIAMETRE || ' mm'
-		     WHEN DIAMETRE > 0 THEN 'Ventosa ' ||  TRIM(SUBSTR(T2.VENTOSA_TIPUS, INSTR(T2.VENTOSA_TIPUS,' - ')+3) || ' Ø' || DIAMETRE || ' mm')
-		     ELSE 'Ventosa ' ||  TRIM(SUBSTR(T2.VENTOSA_TIPUS, INSTR(T2.VENTOSA_TIPUS,' - ')+3) || ' Ø desconegut')  
-		   END,
-		   null,
-		   T2.VENTOSA_TIPUS_MARCA,
-		   null,
-		   null,
-		   null,
-		   null,
-		   null,
-		   'true'
-	FROM   NA_LLISSADEVALL.NA_V_VENT T1
-    	     LEFT JOIN NA_LLISSADEVALL.CAT2_T_VENT_TIPUS T2 ON T1.TIPUS = T2.ID_VENT_TIPUS
 	ORDER BY 1;
 
 
@@ -418,78 +264,6 @@ CREATE OR REPLACE VIEW TMP_CAT_NODE_VDESCARREGA AS
 	       'true'                                 ACTIVE
 	FROM   NA_MATARO.NA_V_VDES T1
 	         LEFT JOIN NA_MATARO.CAT2_T_VALV_TIPUS T2 ON T1.TIPUS = T2.ID_VALV_TIPUS
-	UNION
-	SELECT DISTINCT 
-	       CASE 
-	         WHEN TIPUS = 'X-XX' AND (DIAMETRE = 0 OR DIAMETRE IS NULL) THEN 'VDES_XX'
-	         WHEN TIPUS = 'X-XX' THEN 'VDES_XX_' || DIAMETRE
-	         WHEN (DIAMETRE = 0 OR DIAMETRE IS NULL) THEN 'VDES_' || TIPUS || '_XX'
-	         ELSE 'VDES_' || TIPUS || '_' || DIAMETRE  
-	       END,
-	       'VDESCARREGA',
-	       null,
-	       null,
-		   CASE 
-		     WHEN DIAMETRE > 0 THEN TO_CHAR(DIAMETRE)
-		     ELSE null
-		   END,
-		   CASE 
-		     WHEN DIAMETRE > 0 THEN DIAMETRE
-		     ELSE null
-		   END,
-	       null,
-	       null,
-	       CASE
-	         WHEN (DIAMETRE = 0 OR DIAMETRE IS NULL) AND TIPUS = 'X-XX' THEN 'V. de Descàrrega Desconeguda'
-	         WHEN (DIAMETRE = 0 OR DIAMETRE IS NULL) THEN 'V. de Descàrrega ' ||  TRIM(SUBSTR(T2.VALVULA_TIPUS, INSTR(T2.VALVULA_TIPUS,' - ')+3) || ' Ø desconegut')
-	         ELSE 'V. de Descàrrega ' ||  TRIM(SUBSTR(T2.VALVULA_TIPUS, INSTR(T2.VALVULA_TIPUS,' - ')+3) || ' Ø' || DIAMETRE || ' mm')
-	       END,
-	       null,
-	       T2.VALVULA_TIPUS_MARCA,
-	       null,
-	       null,
-	       null,
-	       null,
-	       null,
-	       'true'
-	FROM   NA_FIGARO.NA_V_VDES T1
-	         LEFT JOIN NA_FIGARO.CAT2_T_VALV_TIPUS T2 ON T1.TIPUS = T2.ID_VALV_TIPUS
-	UNION
-	SELECT DISTINCT 
-	       CASE 
-	         WHEN TIPUS = 'X-XX' AND (DIAMETRE = 0 OR DIAMETRE IS NULL) THEN 'VDES_XX'
-	         WHEN TIPUS = 'X-XX' THEN 'VDES_XX_' || DIAMETRE
-	         WHEN (DIAMETRE = 0 OR DIAMETRE IS NULL) THEN 'VDES_' || TIPUS || '_XX'
-	         ELSE 'VDES_' || TIPUS || '_' || DIAMETRE  
-	       END,
-	       'VDESCARREGA',
-	       null,
-	       null,
-		   CASE 
-		     WHEN DIAMETRE > 0 THEN TO_CHAR(DIAMETRE)
-		     ELSE null
-		   END,
-		   CASE 
-		     WHEN DIAMETRE > 0 THEN DIAMETRE
-		     ELSE null
-		   END,
-	       null,
-	       null,
-	       CASE
-	         WHEN (DIAMETRE = 0 OR DIAMETRE IS NULL) AND TIPUS = 'X-XX' THEN 'V. de Descàrrega Desconeguda'
-	         WHEN (DIAMETRE = 0 OR DIAMETRE IS NULL) THEN 'V. de Descàrrega ' ||  TRIM(SUBSTR(T2.VALVULA_TIPUS, INSTR(T2.VALVULA_TIPUS,' - ')+3) || ' Ø desconegut')
-	         ELSE 'V. de Descàrrega ' ||  TRIM(SUBSTR(T2.VALVULA_TIPUS, INSTR(T2.VALVULA_TIPUS,' - ')+3) || ' Ø' || DIAMETRE || ' mm')
-	       END,
-	       null,
-	       T2.VALVULA_TIPUS_MARCA,
-	       null,
-	       null,
-	       null,
-	       null,
-	       null,
-	       'true'
-	FROM   NA_LLISSADEVALL.NA_V_VDES T1
-	         LEFT JOIN NA_LLISSADEVALL.CAT2_T_VALV_TIPUS T2 ON T1.TIPUS = T2.ID_VALV_TIPUS
 	ORDER BY 1;
 
 
@@ -533,82 +307,6 @@ CREATE OR REPLACE VIEW TMP_CAT_NODE_VALVULA AS
 	       'true'                                 ACTIVE
 	FROM   NA_MATARO.NA_V_VALV T1
 	         LEFT JOIN NA_MATARO.CAT2_T_VALV_TIPUS T2 ON T1.TIPUS = T2.ID_VALV_TIPUS
-	WHERE  T1.FUNCIO <> 'REGULADORA' OR T1.FUNCIO IS NULL
-	UNION
-	SELECT DISTINCT
-	       CASE 
-	         WHEN (TIPUS = 'X-XX' OR TIPUS IS NULL) AND (DIAMETRE = 0 OR DIAMETRE IS NULL) THEN 'VALV_XX'
-	         WHEN (TIPUS = 'X-XX' OR TIPUS IS NULL) THEN 'VALV_XX_' || DIAMETRE
-	         WHEN (DIAMETRE = 0 OR DIAMETRE IS NULL) THEN 'VALV_' || TIPUS || '_XX'
-	         ELSE 'VALV_' || TIPUS || '_' || DIAMETRE  
-	       END,
-	       'VALVULA',
-	       null,
-	       null,
-		   CASE 
-		     WHEN DIAMETRE > 0 THEN TO_CHAR(DIAMETRE)
-		     ELSE null
-		   END,
-		   CASE 
-		     WHEN DIAMETRE > 0 THEN DIAMETRE
-		     ELSE null
-		   END,
-	       null,
-	       null,
-	       CASE
-			 WHEN (TIPUS = 'X-XX' OR TIPUS IS NULL) AND (DIAMETRE = 0 OR DIAMETRE IS NULL) THEN 'Vàlvula Desconeguda'
-			 WHEN (TIPUS = 'X-XX' OR TIPUS IS NULL) THEN 'Vàlvula Desconeguda Ø' || DIAMETRE || ' mm'
-	         WHEN (DIAMETRE = 0 OR DIAMETRE IS NULL) THEN 'Vàlvula ' ||  TRIM(SUBSTR(T2.VALVULA_TIPUS, INSTR(T2.VALVULA_TIPUS,' - ')+3) || ' Ø desconegut')
-	         ELSE 'Vàlvula ' ||  TRIM(SUBSTR(T2.VALVULA_TIPUS, INSTR(T2.VALVULA_TIPUS,' - ')+3) || ' Ø' || DIAMETRE || ' mm')
-		     END,
-	       null,
-	       T2.VALVULA_TIPUS_MARCA,
-	       null,
-	       null,
-	       null,
-	       null,
-	       null,
-	       'true'
-	FROM   NA_FIGARO.NA_V_VALV T1
-	         LEFT JOIN NA_FIGARO.CAT2_T_VALV_TIPUS T2 ON T1.TIPUS = T2.ID_VALV_TIPUS
-	WHERE  T1.FUNCIO <> 'REGULADORA' OR T1.FUNCIO IS NULL
-	UNION
-	SELECT DISTINCT
-	       CASE 
-	         WHEN (TIPUS = 'X-XX' OR TIPUS IS NULL) AND (DIAMETRE = 0 OR DIAMETRE IS NULL) THEN 'VALV_XX'
-	         WHEN (TIPUS = 'X-XX' OR TIPUS IS NULL) THEN 'VALV_XX_' || DIAMETRE
-	         WHEN (DIAMETRE = 0 OR DIAMETRE IS NULL) THEN 'VALV_' || TIPUS || '_XX'
-	         ELSE 'VALV_' || TIPUS || '_' || DIAMETRE  
-	       END,
-	       'VALVULA',
-	       null,
-	       null,
-		   CASE 
-		     WHEN DIAMETRE > 0 THEN TO_CHAR(DIAMETRE)
-		     ELSE null
-		   END,
-		   CASE 
-		     WHEN DIAMETRE > 0 THEN DIAMETRE
-		     ELSE null
-		   END,
-	       null,
-	       null,
-	       CASE
-			 WHEN (TIPUS = 'X-XX' OR TIPUS IS NULL) AND (DIAMETRE = 0 OR DIAMETRE IS NULL) THEN 'Vàlvula Desconeguda'
-			 WHEN (TIPUS = 'X-XX' OR TIPUS IS NULL) THEN 'Vàlvula Desconeguda Ø' || DIAMETRE || ' mm'
-	         WHEN (DIAMETRE = 0 OR DIAMETRE IS NULL) THEN 'Vàlvula ' ||  TRIM(SUBSTR(T2.VALVULA_TIPUS, INSTR(T2.VALVULA_TIPUS,' - ')+3) || ' Ø desconegut')
-	         ELSE 'Vàlvula ' ||  TRIM(SUBSTR(T2.VALVULA_TIPUS, INSTR(T2.VALVULA_TIPUS,' - ')+3) || ' Ø' || DIAMETRE || ' mm')
-		     END,
-	       null,
-	       T2.VALVULA_TIPUS_MARCA,
-	       null,
-	       null,
-	       null,
-	       null,
-	       null,
-	       'true'
-	FROM   NA_LLISSADEVALL.NA_V_VALV T1
-	         LEFT JOIN NA_LLISSADEVALL.CAT2_T_VALV_TIPUS T2 ON T1.TIPUS = T2.ID_VALV_TIPUS
 	WHERE  T1.FUNCIO <> 'REGULADORA' OR T1.FUNCIO IS NULL
 	UNION
 		SELECT DISTINCT
@@ -691,7 +389,6 @@ CREATE OR REPLACE VIEW TMP_CAT_NODE_VALVULA AS
 
 CREATE OR REPLACE VIEW TMP_CAT_NODE_VREGULADORA AS
 
-	-- FIGARO I LLISSA DE VALL NO INFORMEN DE MARCA I MODEL
 	SELECT DISTINCT
 	       CASE
 	         WHEN MARCA IS NULL AND MODEL IS NULL AND DIAMETRE > 0 THEN 'VREG_XX_' || DIAMETRE
@@ -732,76 +429,6 @@ CREATE OR REPLACE VIEW TMP_CAT_NODE_VREGULADORA AS
 	         LEFT JOIN NA_MATARO.CAT2_T_VALV_TIPUS T2 ON T1.TIPUS = T2.ID_VALV_TIPUS
 	         LEFT JOIN NA_MATARO.CAT2_T_VALV_REGU_MARCA T3 ON T1.MARCA = T3.ID_VR_MARCA
 	         LEFT JOIN NA_MATARO.CAT2_T_VALV_REGU_MODEL T4 ON T1.MODEL = T4.ID_VR_MODEL
-	WHERE  T1.FUNCIO = 'REGULADORA'
-	UNION
-	SELECT DISTINCT
-	       CASE
-	       	 WHEN TIPUS='X-XX' AND DIAMETRE = 0 THEN 'VREG_XX'
-	         WHEN TIPUS='X-XX' THEN 'VREG_' || DIAMETRE
-	         ELSE 'VREG_' || TIPUS || '_' || DIAMETRE
-	       END,
-	       'VREGULADORA',
-	       null,
-	       null,
-		   CASE 
-		     WHEN DIAMETRE > 0 THEN TO_CHAR(DIAMETRE)
-		     ELSE null
-		   END,
-		   CASE 
-		     WHEN DIAMETRE > 0 THEN DIAMETRE
-		     ELSE null
-		   END,
-	       null,
-	       null,
-	       CASE
-	         WHEN DIAMETRE > 0 THEN 'V. Reguladora ' || TRIM(SUBSTR(T2.VALVULA_TIPUS_MARCA, INSTR(T2.VALVULA_TIPUS_MARCA,' - ')+3)) || ' Ø' ||  DIAMETRE || ' mm' 
-	         ELSE 'V. Reguladora ' || TRIM(SUBSTR(T2.VALVULA_TIPUS_MARCA, INSTR(T2.VALVULA_TIPUS_MARCA,' - ')+3)) || ' Diàmetre desconegut' 
-	       END,
-	       null,
-	       null,
-	       null,
-	       null,
-	       null,
-	       null,
-	       null,
-	       'true'
-	FROM   NA_FIGARO.NA_V_VALV T1
-	         LEFT JOIN NA_FIGARO.CAT2_T_VALV_TIPUS T2 ON T1.TIPUS = T2.ID_VALV_TIPUS
-	WHERE  T1.FUNCIO = 'REGULADORA'
-	UNION
-	SELECT DISTINCT
-	       CASE
-	         WHEN TIPUS='X-XX' AND DIAMETRE = 0 THEN 'VREG_XX'
-	         WHEN TIPUS='X-XX' THEN 'VREG_' || DIAMETRE
-	         ELSE 'VREG_' || TIPUS || '_' || DIAMETRE
-	       END,
-	       'VREGULADORA',
-	       null,
-	       null,
-		   CASE 
-		     WHEN DIAMETRE > 0 THEN TO_CHAR(DIAMETRE)
-		     ELSE null
-		   END,
-		   CASE 
-		     WHEN DIAMETRE > 0 THEN DIAMETRE
-		     ELSE null
-		   END,
-	       null,
-	       null,
-	       CASE
-	         WHEN DIAMETRE > 0 THEN 'V. Reguladora ' || TRIM(SUBSTR(T2.VALVULA_TIPUS_MARCA, INSTR(T2.VALVULA_TIPUS_MARCA,' - ')+3)) || ' Ø' ||  DIAMETRE || ' mm' 
-	         ELSE 'V. Reguladora ' || TRIM(SUBSTR(T2.VALVULA_TIPUS_MARCA, INSTR(T2.VALVULA_TIPUS_MARCA,' - ')+3)) || ' Diàmetre desconegut' 
-	       END,
-	       null,
-	       null,
-	       null,
-	       null,
-	       null,
-	       null,
-	       null,
-	       'true'
-	FROM   NA_LLISSADEVALL.NA_V_VALV T1
-	         LEFT JOIN NA_LLISSADEVALL.CAT2_T_VALV_TIPUS T2 ON T1.TIPUS = T2.ID_VALV_TIPUS
 	WHERE  T1.FUNCIO = 'REGULADORA'
 	ORDER BY 1;
 

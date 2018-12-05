@@ -1,7 +1,7 @@
 
 -- ABASTAMENT
 
-CREATE OR REPLACE VIEW GW_MIGRA_NETQUA.EXT_ADDRESS AS
+CREATE OR REPLACE VIEW GW_MIGRA_NETAQUA.EXT_ADDRESS AS
 
   SELECT ROW_NUMBER() OVER (ORDER BY EXPL_ID, STREETAXIS_ID, ORDRE ) ID,
          T.MUNI_ID, T.POSTCODE, T.STREETAXIS_ID, T.POSTNUMBER, PLOT_ID, T.THE_GEOM, T.EXPL_ID
@@ -15,26 +15,6 @@ CREATE OR REPLACE VIEW GW_MIGRA_NETQUA.EXT_ADDRESS AS
            MDSYS.SDO_GEOMETRY(2001,25831,MDSYS.SDO_POINT_TYPE( X_COORD, Y_COORD, null), null, null) THE_GEOM,
            1                                 EXPL_ID
     FROM   NA_MATARO.CAT_T_NUM_POSTALS
-    UNION ALL
-    SELECT 2                                 MUNI_ID,
-           NULL                              POSTCODE,
-           '081347_' || CODI_CARRER          STREETAXIS_ID,
-           NUMERO                            POSTNUMBER,
-           TO_NUMBER( regexp_replace(NUMERO, '[^0-9]', '') ) ORDRE,
-           NULL                              PLOT_ID,
-           MDSYS.SDO_GEOMETRY(2001,25831,MDSYS.SDO_POINT_TYPE( X_COORD, Y_COORD, null), null, null) THE_GEOM,
-           2                                 EXPL_ID
-    FROM   NA_FIGARO.CAT_T_NUM_POSTALS
-    UNION ALL
-    SELECT 3                                 MUNI_ID,
-           NULL                              POSTCODE,
-           '081081_' || CODI_CARRER          STREETAXIS_ID,
-           NUMERO                            POSTNUMBER,
-           TO_NUMBER( regexp_replace(NUMERO, '[^0-9]', '') ) ORDRE,
-           NULL                              PLOT_ID,
-           MDSYS.SDO_GEOMETRY(2001,25831,MDSYS.SDO_POINT_TYPE( X_COORD, Y_COORD, null), null, null) THE_GEOM,
-           3                                 EXPL_ID
-    FROM   NA_LLISSADEVALL.CAT_T_NUM_POSTALS
   )  T;
 
 

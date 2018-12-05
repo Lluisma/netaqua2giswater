@@ -130,6 +130,26 @@ $$ LANGUAGE plpgsql;
 
 
 
+
+-- ** DESACTIVA ELS TRIGGERS DE CONTROL TOPOLÒGIC D'ARCS I NODES
+
+
+CREATE OR REPLACE FUNCTION ud_migra.bulk_notfk( schema2 TEXT ) 
+RETURNS TEXT AS $$
+DECLARE
+  r record;
+BEGIN
+
+  FOR r IN (SELECT table_name, constraint_name FROM information_schema.table_constraints WHERE table_schema = schema2) LOOP
+    RAISE INFO '%','dropping '||r.constraint_name;
+    EXECUTE 'ALTER TABLE ' || schema2 || '.' || r.table_name || ' DROP CONSTRAINT ' || r.constraint_name;
+  END LOOP;
+
+END
+$$ LANGUAGE plpgsql;
+
+
+
 CREATE OR REPLACE FUNCTION ud_migra.bulk_tables( schema2 TEXT ) 
 RETURNS TEXT AS $$
 DECLARE
