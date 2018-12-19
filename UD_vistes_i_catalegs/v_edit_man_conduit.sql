@@ -60,9 +60,9 @@ CREATE OR REPLACE FORCE VIEW v_edit_man_conduit AS
          CAST(null AS NUMBER)                         AS macrosector_id,
          SET_STATE( T1.ESTAT )                        AS STATE,
          SET_STATE_TYPE( T1.ESTAT )                   AS state_type,
-         NULL                                         AS annotation,
+         SET_PART(T1.OT_PART)                         AS annotation,
          T1.OBS                                       AS observ,
-         NULL                                         AS "comment",
+         SET_PART(T1.OT_BAIXA_PART)                   AS "comment",
          CASE T1.CONFIRMAT
            WHEN 1 THEN 'true'
            --WHEN 0 THEN 'false'
@@ -76,8 +76,8 @@ CREATE OR REPLACE FORCE VIEW v_edit_man_conduit AS
          SET_CONDUIT_CATEGORY( T1.FUNCIO )            AS category_type,
          SET_CONDUIT_FLUID( T1.FUNCIO )               AS fluid_type,
          NULL                                         AS location_type,
-         SET_WORKCAT( T1.EXPEDIENT, T1.OT_PART )      AS WORKCAT_ID,
-         SET_WORKCAT( T1.EXPBAIXA, T1.OT_BAIXA_PART ) AS WORKCAT_ID_END,
+         SET_WORKCAT( T1.EXPEDIENT, 0 )               AS WORKCAT_ID,
+         SET_WORKCAT( T1.EXPBAIXA, 0 )                AS WORKCAT_ID_END,
          NULL                                         AS buildercat_id,
          T1.DATA_ALTA                                 AS builtdate,
          T1.DATA_BAIXA                                AS enddate,
