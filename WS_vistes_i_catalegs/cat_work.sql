@@ -16,30 +16,20 @@ BEGIN
     END IF;
   
     sent_sql := sent_sql ||
-               ' SELECT DISTINCT CASE WHEN T1.OT_PART IS NULL THEN T1.EXPEDIENT ' ||
-               '                      WHEN T1.OT_PART = ''0'' THEN T1.EXPEDIENT ' ||
-               '                      ELSE T1.EXPEDIENT || ''-'' || T1.OT_PART ' ||
-               '       END AS id, ' ||
+               ' SELECT DISTINCT T1.EXPEDIENT AS id, ' ||
                '       NULL AS descript, ' ||
                '       NULL AS link, ' ||
                '       T1.EXPEDIENT AS workid_key1, ' ||
-               '       CASE WHEN T1.OT_PART = ''0'' THEN NULL ' ||
-               '            ELSE T1.OT_PART ' ||
-               '       END AS workid_key2, ' ||
+               '       CAST(null AS INTEGER) AS workid_key2, ' ||
                '       NULL AS builtdate ' ||
                'FROM  NA_MATARO.NA_V_' || R.ID_TIPUS || ' T1 ' ||
                'WHERE (T1.EXPEDIENT <> ''0'') ' ||
                'UNION ' ||
-               'SELECT DISTINCT CASE WHEN T1.OT_BAIXA_PART IS NULL THEN T1.EXPBAIXA ' ||
-               '                     WHEN T1.OT_BAIXA_PART = ''0'' THEN T1.EXPBAIXA ' ||
-               '                     ELSE T1.EXPBAIXA || ''-'' || T1.OT_BAIXA_PART ' ||
-               '       END AS id, ' ||
+               'SELECT DISTINCT T1.EXPBAIXA AS id, ' ||
                '       NULL AS descript, ' ||
                '       NULL AS link, ' ||
                '       T1.EXPBAIXA AS workid_key1, ' ||
-               '       CASE WHEN T1.OT_BAIXA_PART = ''0'' THEN NULL ' ||
-               '            ELSE T1.OT_BAIXA_PART ' ||
-               '       END AS workid_key2, ' ||
+               '       CAST(null AS INTEGER) AS workid_key2, ' ||
                '       NULL AS builtdate ' ||
                'FROM  NA_MATARO.NA_V_' || R.ID_TIPUS || ' T1 ' ||
                'WHERE (T1.EXPBAIXA <> ''0'') ';
