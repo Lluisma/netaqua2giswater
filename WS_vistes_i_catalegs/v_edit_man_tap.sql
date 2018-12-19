@@ -29,9 +29,9 @@ SELECT  T1.ID_FONT                              connec_id,
           ELSE -1
         END                                     state,
         CAST(null AS SMALLINT)                  state_type,
-        null                                    annotation,
+        SET_PART(T1.OT_PART)                    annotation,
         T1.OBS                                  observ,
-        null                                    "comment",
+        SET_PART(T1.OT_BAIXA_PART)              "comment",
         CAST(null AS INTEGER)                   dma_id,
         REPLACE(T1.PIS_PRES,'PIS','M_')         presszonecat_id,
         null                                    soilcat_id,
@@ -56,13 +56,13 @@ SELECT  T1.ID_FONT                              connec_id,
           WHEN (T1.CARRER1 IS NOT NULL AND T1.CARRER1 <> '0') THEN REPLACE(T1.CARRER1,',1','')
           ELSE null
         END                                     streetaxis_id,
-        T1.OT_PART                              postnumber,
+        CAST(null AS NUMBER)                    postnumber,
         null                                    postcomplement,
         CASE
           WHEN (T1.CARRER2 IS NOT NULL AND T1.CARRER2 <> '0') THEN REPLACE(T1.CARRER2,',1','')
           ELSE null
         END                                     streetaxis2_id,
-        T1.OT_BAIXA_PART                        postnumber2,
+        CAST(null AS NUMBER)                    postnumber2,
         null                                    postcomplement2,
         T1.SITUACIO                             descript,
         null                                    arc_id,

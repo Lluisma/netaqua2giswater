@@ -21,9 +21,9 @@ CREATE OR REPLACE VIEW V_EDIT_MAN_TANK AS
            ELSE -1
          END                            state,
          CAST(null AS SMALLINT)         state_type,
-         null                           annotation,
+         SET_PART(T1.OT_PART)           annotation,
          null                           observ,
-         null                           "comment",
+         SET_PART(T1.OT_BAIXA_PART)     "comment",
          CAST(null AS INTEGER)          dma_id,
          CASE
            WHEN T1.PIS = 'PIS65'   THEN 'M_65'
@@ -59,10 +59,10 @@ CREATE OR REPLACE VIEW V_EDIT_MAN_TANK AS
          1                              muni_id,
          CAST(null AS INTEGER)          postcode,
          null                           streetaxis_id,
-          T1.OT_PART                    postnumber,
+         CAST(null AS NUMBER)           postnumber,
          null                           postcomplement,
          null                           streetaxis2_id,
-         T1.OT_BAIXA_PART               postnumber2,
+         CAST(null AS NUMBER)           postnumber2,
          null                           postcomplement2,
          null                           descript,
          '-'                            svg,
