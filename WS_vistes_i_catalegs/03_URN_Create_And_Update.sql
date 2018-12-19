@@ -506,7 +506,7 @@ BEGIN
              || '  UPDATE ' || schema1 || '.amsa_rev_t_hydrant '
              || '     SET node_id = ' || schema1 || '.amsa_urn.id_nou '
              || '  FROM   ' || schema1 || '.amsa_urn '
-             || '  WHERE  CAST(' || schema1 || '.amsa_rev_t_hydrant.connec_id AS VARCHAR(16)) = ' || schema1 || '.amsa_urn.id_element '
+             || '  WHERE  CAST(' || schema1 || '.amsa_rev_t_hydrant.node_id AS VARCHAR(16)) = ' || schema1 || '.amsa_urn.id_element '
              || '    AND  CAST(' || schema1 || '.amsa_rev_t_hydrant.code AS VARCHAR(16)) = ' || schema1 || '.amsa_urn.id_amsa '
              || '    AND  ' || schema1 || '.amsa_rev_t_hydrant.expl_id = ' || schema1 || '.amsa_urn.expl_id '
              || '    AND  ' || schema1 || '.amsa_urn.nodetype_id = ''HIDRANT'' '

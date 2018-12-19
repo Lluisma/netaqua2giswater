@@ -165,8 +165,12 @@ BEGIN
   RAISE NOTICE USING MESSAGE = 'v_edit_man_connec >> Valors NODE actualitzats : ' || recompte;
 
 
-  sql_update := 'WITH rows AS ( '
+  /*sql_update := 'WITH rows AS ( '
              || '  UPDATE ' || schema1 || '.connec SET arc_id = feature_id WHERE featurecat_id = ''TRAM'' AND feature_id IS NOT NULL '
+             || '  RETURNING 1) '
+             || 'SELECT count(*) FROM rows';*/
+  sql_update := 'WITH rows AS ( '
+             || '  UPDATE ' || schema1 || '.v_edit_man_connec SET arc_id = feature_id WHERE featurecat_id = ''TRAM'' AND feature_id IS NOT NULL '
              || '  RETURNING 1) '
              || 'SELECT count(*) FROM rows';
   EXECUTE sql_update INTO recompte;
@@ -211,8 +215,12 @@ BEGIN
   EXECUTE sql_update INTO recompte;
   RAISE NOTICE USING MESSAGE = 'v_edit_man_gully >> Valors NODE actualitzats : ' || recompte;
 
-sql_update := 'WITH rows AS ( '
+  /*sql_update := 'WITH rows AS ( '
              || '  UPDATE ' || schema1 || '.gully SET arc_id = feature_id WHERE featurecat_id = ''TRAM'' AND feature_id IS NOT NULL '
+             || '  RETURNING 1) '
+             || 'SELECT count(*) FROM rows';*/
+  sql_update := 'WITH rows AS ( '
+             || '  UPDATE ' || schema1 || '.v_edit_man_gully SET arc_id = feature_id WHERE featurecat_id = ''TRAM'' AND feature_id IS NOT NULL '
              || '  RETURNING 1) '
              || 'SELECT count(*) FROM rows';
   EXECUTE sql_update INTO recompte;

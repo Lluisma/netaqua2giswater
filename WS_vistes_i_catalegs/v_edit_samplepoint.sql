@@ -44,22 +44,20 @@ SELECT T1.ID_MOST                      sample_id_0,
        T1.DATA_BAIXA                   enddate,
        CASE
          WHEN T1.EXPEDIENT = '0' OR T1.EXPEDIENT IS NULL THEN null
-         WHEN T1.OT_PART = '0' OR T1.OT_PART IS NULL THEN T1.EXPEDIENT
-         ELSE T1.EXPEDIENT || '-' || T1.OT_PART
+         ELSE T1.EXPEDIENT
        END                             workcat_id,
        CASE 
          WHEN T1.EXPBAIXA = '0' OR T1.EXPBAIXA IS NULL THEN null
-         WHEN T1.OT_BAIXA_PART = '0' OR T1.OT_BAIXA_PART IS NULL THEN T1.EXPBAIXA
-         ELSE T1.EXPBAIXA || '-' || T1.OT_BAIXA_PART
+         ELSE T1.EXPBAIXA
        END                             workcat_id_end,
        T1.ANGLE_ROTACIO                rotation,
        1                               muni_id,
        CAST(null AS INTEGER)           postcode,
        TO_NUMBER(REPLACE(T1.CARRER1,',1',''))     streetaxis_id,
-       CAST(null AS INTEGER)           postnumber,
+       T1.OT_PART                      postnumber,
        null                            postcomplement,
        TO_NUMBER(REPLACE(T1.CARRER2,',1',''))     streetaxis2_id,
-       CAST(null AS INTEGER)           postnumber2,
+       T1.OT_BAIXA_PART                postnumber2,
        null                            postcomplement2,
        T1.INDRET                       place_name,
        T1.ARMARI                       cabinet,

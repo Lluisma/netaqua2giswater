@@ -41,12 +41,10 @@ CREATE OR REPLACE VIEW V_EDIT_MAN_WATERWELL AS
          null                           location_type,
          CASE 
            WHEN T1.EXPEDIENT = '0' THEN null
-           WHEN T1.OT_PART IS NOT NULL AND T1.OT_PART <> 0 THEN T1.EXPEDIENT || '-' || T1.OT_PART
            ELSE T1.EXPEDIENT
          END                            workcat_id,
          CASE 
            WHEN T1.EXPBAIXA = '0' THEN null
-           WHEN T1.OT_BAIXA_PART IS NOT NULL AND T1.OT_BAIXA_PART <> 0 THEN T1.EXPBAIXA || '-' || T1.OT_BAIXA_PART
            ELSE T1.EXPBAIXA
          END                            workcat_id_end,
          null                           buildercat_id,
@@ -56,10 +54,10 @@ CREATE OR REPLACE VIEW V_EDIT_MAN_WATERWELL AS
          1                              muni_id,
          CAST(null AS INTEGER)          postcode,
          null                           streetaxis_id,
-         CAST(null AS INTEGER)          postnumber,
+         T1.OT_PART                     postnumber,
          null                           postcomplement,
          null                           streetaxis2_id,
-         CAST(null AS INTEGER)          postnumber2,
+         T1.OT_BAIXA_PART               postnumber2,
          null                           postcomplement2,
          null                           descript,
          '-'                            svg,

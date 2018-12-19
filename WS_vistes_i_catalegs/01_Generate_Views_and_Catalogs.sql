@@ -294,6 +294,23 @@ CREATE OR REPLACE VIEW ws_migra.amsa_ctrl_no_geom AS
 
 
 
+CREATE OR REPLACE VIEW ws_migra.amsa_ctrl_revi_dates AS
+  SELECT 'greentap' obj_type, MIN(data_rev) min_value FROM ws_migra.amsa_rev_t_greentap
+  UNION
+  SELECT 'hydrant - dr', MIN(data_dr) FROM ws_migra.amsa_rev_t_hydrant
+  UNION
+  SELECT 'hydrant - fr', MIN(data_fr) FROM ws_migra.amsa_rev_t_hydrant
+  UNION
+  SELECT 'samplepoint', MIN(data_rev) FROM ws_migra.amsa_rev_t_samplepoint
+  UNION
+  SELECT 'tap', MIN(data_rev) FROM ws_migra_old.amsa_rev_t_tap
+  UNION
+  SELECT 'valve - dr', MIN(data_dr) FROM ws_migra.amsa_rev_t_valve
+  UNION
+  SELECT 'valve - fr', MIN(data_fr) FROM ws_migra.amsa_rev_t_valve
+  UNION
+  SELECT 'wjoin', MIN(data_rev) FROM ws_migra.amsa_rev_t_wjoin;
+
 
 
 

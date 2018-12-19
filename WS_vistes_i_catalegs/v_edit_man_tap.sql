@@ -41,12 +41,10 @@ SELECT  T1.ID_FONT                              connec_id,
         null                                    location_type,
         CASE 
           WHEN T1.EXPEDIENT = '0' THEN null
-          WHEN T1.OT_PART IS NOT NULL AND T1.OT_PART <> 0 THEN T1.EXPEDIENT || '-' || T1.OT_PART
           ELSE T1.EXPEDIENT
         END                                     workcat_id,
         CASE 
           WHEN T1.EXPBAIXA = '0' THEN null
-          WHEN T1.OT_BAIXA_PART IS NOT NULL AND T1.OT_BAIXA_PART <> 0 THEN T1.EXPBAIXA || '-' || T1.OT_BAIXA_PART
           ELSE T1.EXPBAIXA
         END                                     workcat_id_end,
         null                                    buildercat_id,
@@ -58,13 +56,13 @@ SELECT  T1.ID_FONT                              connec_id,
           WHEN (T1.CARRER1 IS NOT NULL AND T1.CARRER1 <> '0') THEN REPLACE(T1.CARRER1,',1','')
           ELSE null
         END                                     streetaxis_id,
-        CAST(null AS INTEGER)                   postnumber,
+        T1.OT_PART                              postnumber,
         null                                    postcomplement,
         CASE
           WHEN (T1.CARRER2 IS NOT NULL AND T1.CARRER2 <> '0') THEN REPLACE(T1.CARRER2,',1','')
           ELSE null
         END                                     streetaxis2_id,
-        CAST(null AS INTEGER)                   postnumber2,
+        T1.OT_BAIXA_PART                        postnumber2,
         null                                    postcomplement2,
         T1.SITUACIO                             descript,
         null                                    arc_id,
