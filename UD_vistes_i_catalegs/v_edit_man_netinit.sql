@@ -42,7 +42,7 @@ CREATE OR REPLACE FORCE VIEW v_edit_man_netinit AS
     NULL                                         AS fluid_type,
     CASE T1.NODE_FUN
       WHEN 'IC' THEN 'CONEGUDA'
-      ELSE NULL
+      ELSE 'DESCONEGUDA'
     END                                          AS LOCATION_TYPE,
     SET_WORKCAT( T1.EXPEDIENT, 0 )               AS WORKCAT_ID,
     SET_WORKCAT( T1.EXPBAIXA, 0 )                AS WORKCAT_ID_END,
