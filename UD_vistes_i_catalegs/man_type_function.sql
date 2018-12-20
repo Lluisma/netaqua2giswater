@@ -1,5 +1,7 @@
 
--- NA_NODE.NODE_FUN		'NR'
+-- CL_NODE.NODE_FUN		'NR'
+-- CL_EMBORNAL.TIPUS  'D', 'S', 'X'
+-- CL_REIXA.TIPUS     'D', 'S', 'X'
 
 CREATE OR REPLACE VIEW MAN_TYPE_FUNCTION AS 
 
@@ -21,6 +23,17 @@ CREATE OR REPLACE VIEW MAN_TYPE_FUNCTION AS
     SELECT  'CUNETA', 'NODE', 'JUNCTION', 'Node Cuneta'
 		FROM 	DUAL
 
+		UNION
+		
+    SELECT 'D', 'GULLY', 'EMBORNAL' || chr(38) || 'REIXA', 'Directe'
+		FROM 	DUAL
+    UNION
+    SELECT 'S', 'GULLY', 'EMBORNAL' || chr(38) || 'REIXA', 'Sifònic'
+		FROM 	DUAL
+    UNION
+    SELECT 'X', 'GULLY', 'EMBORNAL' || chr(38) || 'REIXA', 'Desconegut'
+		FROM 	DUAL
+    
 		ORDER BY 2, 3, 1
 
 	) T1;
