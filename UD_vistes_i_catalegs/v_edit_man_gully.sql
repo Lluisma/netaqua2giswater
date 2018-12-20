@@ -31,8 +31,24 @@ CREATE OR REPLACE FORCE VIEW GW_MIGRA_NETSANEA.tmp_v_edit_man_gully_embornal AS
     CAST(null AS NUMBER)                        AS dma_id,
     TO_NUMBER(SET_MACRODMA_GULLY( T1.SECTOR ))  AS macrodma_id,
     NULL                                        AS SOILCAT_ID,
-    NULL                                        AS FUNCTION_TYPE,
-    NULL                                        AS CATEGORY_TYPE,
+    CASE T1.TIPUS
+      WHEN 'ERS'	THEN 'S'
+      WHEN 'ERD'	THEN 'D'
+      WHEN 'EBRS' THEN 'S'
+      WHEN 'EBRD' THEN 'D'
+      WHEN 'EB'   THEN 'X'
+      WHEN '??'   THEN 'X'
+      ELSE NULL
+    END                                        AS FUNCTION_TYPE,
+    CASE T1.TIPUS
+      WHEN 'ERS'	THEN 'R'
+      WHEN 'ERD'	THEN 'R'
+      WHEN 'EBRS' THEN 'BR'
+      WHEN 'EBRD' THEN 'BR'
+      WHEN 'EB'   THEN 'B'
+      WHEN '??'   THEN 'X'
+      ELSE NULL
+    END                                         AS CATEGORY_TYPE,
     NULL                                        AS FLUID_TYPE,
     NULL                                        AS LOCATION_TYPE,
     SET_WORKCAT(T1.EXPEDIENT, 0 )               AS workcat_id,
@@ -74,14 +90,8 @@ CREATE OR REPLACE FORCE VIEW GW_MIGRA_NETSANEA.tmp_v_edit_man_gully_embornal AS
     T1.TIP_CAI                                  AS matcat_id,
     T1.PROF_SOR/100                             AS SANDBOX,
     1                                           AS UNITS,  
-    CASE
-      WHEN INSTR(T1.TIPUS,'B')>0 THEN 1
-      ELSE 0
-    END                                         AS GROOVE,
-    CASE
-      WHEN INSTR(T1.TIPUS,'S')>0 THEN 1
-      ELSE 0
-    END                                         AS SIPHON,
+    NULL                                        AS GROOVE,
+    NULL                                        AS SIPHON,
     SET_CONNEC_CAT( T1.MATERIAL_CONN, T1.SECCIO_CONN ) AS CONNEC_ARCCAT_ID,
     T1.LONGITUD_CONN                            AS CONNEC_LENGTH,
     T1.SONDA_CONN                               AS CONNEC_DEPTH,
@@ -130,8 +140,22 @@ CREATE OR REPLACE FORCE VIEW GW_MIGRA_NETSANEA.tmp_v_edit_man_gully_reixa AS
     CAST(null AS NUMBER)                        AS dma_id,
     TO_NUMBER(SET_MACRODMA_GULLY( T1.SECTOR ))  AS macrodma_id,
     NULL                                        AS SOILCAT_ID,
-    NULL                                        AS FUNCTION_TYPE,
-    NULL                                        AS CATEGORY_TYPE,
+    CASE T1.TIPUS
+      WHEN 'RBD'	THEN 'D'
+      WHEN 'RBS'	THEN 'S'
+      WHEN 'RS'   THEN 'S'
+      WHEN 'RD'   THEN 'D'
+      WHEN '??'   THEN 'X'
+      ELSE NULL
+    END                                        AS FUNCTION_TYPE,
+    CASE T1.TIPUS
+      WHEN 'RBD' THEN 'BR'
+      WHEN 'RBS' THEN 'BR'
+      WHEN 'RD'  THEN 'R'
+      WHEN 'RS'  THEN 'R'
+      WHEN '??'  THEN 'X'
+      ELSE NULL
+    END                                         AS CATEGORY_TYPE,
     NULL                                        AS FLUID_TYPE,
     NULL                                        AS LOCATION_TYPE,
     SET_WORKCAT(T1.EXPEDIENT, 0 )               AS workcat_id,
@@ -173,14 +197,8 @@ CREATE OR REPLACE FORCE VIEW GW_MIGRA_NETSANEA.tmp_v_edit_man_gully_reixa AS
     NULL                                        AS matcat_id,
     T1.PROF_SOR/100                             AS SANDBOX,
     T1.NUMREP                                   AS UNITS,  
-    CASE
-      WHEN INSTR(T1.TIPUS,'B')>0 THEN 1
-      ELSE 0
-    END                                         AS GROOVE,
-    CASE
-      WHEN INSTR(T1.TIPUS,'S')>0 THEN 1
-      ELSE 0
-    END                                         AS SIPHON,
+    NULL                                        AS GROOVE,
+    NULL                                        AS SIPHON,
     SET_CONNEC_CAT( T1.MATERIAL_CONN, T1.SECCIO_CONN ) AS CONNEC_ARCCAT_ID,
     T1.LONGITUD_CONN                            AS CONNEC_LENGTH,
     T1.SONDA_CONN                               AS CONNEC_DEPTH,
