@@ -1,8 +1,10 @@
 
 
 -- CL_CLAVEGUERO.NUM_CONN     CAT2_T_SIMPLE_MULTIPLE
--- NA_NODE.P_CRITIC     			'NR'
--- NA_TRAM.ID_SUBXARXA	      'P*' / 'S*' / 'A*'
+-- CL_NODE.P_CRITIC     			'NR'
+-- CL_TRAM.ID_SUBXARXA	      'P*' / 'S*' / 'A*'
+-- CL_EMBORNAL.TIPUS          'B', 'BR', 'R', 'X'
+-- CL_REIXA.TIPUS             'BR', 'R', 'X'
 
 
 CREATE OR REPLACE VIEW MAN_TYPE_CATEGORY AS 
@@ -33,6 +35,20 @@ CREATE OR REPLACE VIEW MAN_TYPE_CATEGORY AS
     SELECT  'P_CRITIC',  'NODE', 'CHAMBER' || chr(38) || 'MANHOLE' || chr(38) || 'NETINIT' || chr(38) || 'OUTFALL', 'Punt crític'
 		FROM 	DUAL
     
+    UNION
+    
+    SELECT 'B', 'GULLY', 'EMBORNAL', 'Bústia'
+    FROM DUAL
+    UNION
+    SELECT 'BR', 'GULLY', 'EMBORNAL' || chr(38) || 'REIXA', 'Bústia Reixa'
+    FROM DUAL
+    UNION
+    SELECT 'R', 'GULLY', 'EMBORNAL' || chr(38) || 'REIXA', 'Reixa'
+    FROM DUAL
+    UNION
+    SELECT 'X', 'GULLY', 'EMBORNAL' || chr(38) || 'REIXA', 'Desconegut'
+    FROM DUAL
+       
 		ORDER BY 2, 3, 1
 
 	) T1;
