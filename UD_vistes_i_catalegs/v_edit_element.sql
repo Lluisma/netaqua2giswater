@@ -46,7 +46,10 @@ CREATE OR REPLACE VIEW TMP_V_EDIT_ELEMENT_TAPA AS
                                            AND T1.TAPA_ART = T3.TAPA_ART
                                            AND T1.TAPA_BLO = T3.TAPA_BLO
                                            AND T1.TAPA_HOM = T3.TAPA_HOM
-  WHERE T1.ESTAT IN ('A','B','X');
+  WHERE T1.ESTAT IN ('A','B','X')
+    AND (   T1.TAPA_MAT IS NOT NULL
+         OR T1.TAPA_SEC    IS NOT NULL
+         OR T1.TAPA_DIM    IS NOT NULL);
   
 
 CREATE OR REPLACE VIEW TMP_V_EDIT_ELEMENT_GRAONS AS
@@ -86,7 +89,8 @@ CREATE OR REPLACE VIEW TMP_V_EDIT_ELEMENT_GRAONS AS
           null                                        AS undelete,
           1                                           AS expl_id
   FROM  NS_MATARO.CL_V_NODE T1
-  WHERE (T1.GRAONS_MAT IS NOT NULL  OR  (T1.GRAONS_NUM IS NOT NULL AND T1.GRAONS_NUM>0))
+  WHERE (     T1.GRAONS_MAT IS NOT NULL 
+         OR  (T1.GRAONS_NUM IS NOT NULL AND T1.GRAONS_NUM>0))
     AND T1.ESTAT IN ('A','B','X');
   
 
