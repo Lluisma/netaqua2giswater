@@ -9,7 +9,7 @@ CREATE OR REPLACE VIEW ARC_TYPE AS
 			'true'		    active,
 			'true'		    code_autofill,
 			'Canonada'		descript,
-			null		      link_path
+			null          link_path
 	FROM DUAL
 	UNION
 	SELECT	'VARC','VARC','PIPE','man_varc','inp_pipe','true','true','Arc virtual',null
