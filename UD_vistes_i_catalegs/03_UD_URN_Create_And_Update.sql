@@ -52,20 +52,25 @@ BEGIN
       ||  'ORDER BY expl_id, CAST(gully_id AS INTEGER)';
 
 
+  EXECUTE 'INSERT INTO ' || schema1 || '.amsa_urn (nodetype_id, id_element, id_amsa, expl_id) '
+      ||  'SELECT ''element'', element_id, code, expl_id FROM ' || schema1 || '.v_edit_element ';
 
-  EXECUTE 'DROP TABLE IF EXISTS ' || schema1 || '.amsa_urn_element';
-
-  EXECUTE 'CREATE TABLE ' || schema1 || '.amsa_urn_element ( '
-       || '  id_nou        SERIAL, '
-       || '  id_vell       CHARACTER VARYING(30) '
-       || '  )';
-
-  EXECUTE 'INSERT INTO ' || schema1 || '.amsa_urn_element (id_vell) '
-      ||  'SELECT element_id FROM ' || schema1 || '.v_edit_element ';
-  
+  RETURN 'Taula amsa_urn actualitzada';
 
 
-  RETURN 'Taules amsa_urn/amsa_urn_element actualitzada';
+
+--  EXECUTE 'DROP TABLE IF EXISTS ' || schema1 || '.amsa_urn_element';
+--
+--  EXECUTE 'CREATE TABLE ' || schema1 || '.amsa_urn_element ( '
+--       || '  id_nou        SERIAL, '
+--       || '  id_vell       CHARACTER VARYING(30) '
+--       || '  )';
+--
+--  EXECUTE 'INSERT INTO ' || schema1 || '.amsa_urn_element (id_vell) '
+--      ||  'SELECT element_id FROM ' || schema1 || '.v_edit_element ';
+--
+--  RETURN 'Taules amsa_urn/amsa_urn_element actualitzada';
+
 END
 $$ LANGUAGE plpgsql;
 
@@ -535,8 +540,11 @@ BEGIN
   sql_update := 'WITH rows AS ( ' 
              || '  UPDATE ' || schema1 || '.v_edit_element '
              || '   SET element_id = id_nou '
-             || '  FROM   ' || schema1 || '.amsa_urn_element '
-             || '  WHERE  ' || schema1 || '.amsa_urn_element.id_vell  = ' || schema1 || '.v_edit_element.element_id '
+             --|| '  FROM   ' || schema1 || '.amsa_urn_element '
+             --|| '  WHERE  ' || schema1 || '.amsa_urn_element.id_vell  = ' || schema1 || '.v_edit_element.element_id '
+             || '  FROM   ' || schema1 || '.amsa_urn '
+             || '  WHERE  ' || schema1 || '.amsa_urn.nodetype_id = ''element'' '
+             || '    AND  ' || schema1 || '.amsa_urn.id_element  = ' || schema1 || '.v_edit_element.element_id '
              || '  RETURNING 1) '
              || 'SELECT count(*) FROM rows';
 
@@ -560,8 +568,11 @@ BEGIN
   sql_update := 'WITH rows AS ( ' 
              || '  UPDATE ' || schema1 || '.element_x_node '
              || '     SET element_id = id_nou '
-             || '  FROM   ' || schema1 || '.amsa_urn_element '
-             || '  WHERE  ' || schema1 || '.amsa_urn_element.id_vell  = ' || schema1 || '.element_x_node.element_id '
+             --|| '  FROM   ' || schema1 || '.amsa_urn_element '
+             --|| '  WHERE  ' || schema1 || '.amsa_urn_element.id_vell  = ' || schema1 || '.element_x_node.element_id '
+             || '  FROM   ' || schema1 || '.amsa_urn '
+             || '  WHERE  ' || schema1 || '.amsa_urn.nodetype_id = ''element'' '
+             || '    AND  ' || schema1 || '.amsa_urn.id_element  = ' || schema1 || '.element_x_connec.element_id '
              || '  RETURNING 1) '
              || 'SELECT count(*) FROM rows';
 
