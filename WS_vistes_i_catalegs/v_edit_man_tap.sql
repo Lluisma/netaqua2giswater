@@ -3,7 +3,7 @@
 CREATE OR REPLACE VIEW V_EDIT_MAN_TAP AS
 
 SELECT  T1.ID_FONT                              connec_id,
-        T1.ID_FONT                              code,
+        T1.CODI_LAB                             code,
         CAST(null AS NUMBER)                    elevation,
         CAST(null AS NUMBER)                    depth,
         CASE
