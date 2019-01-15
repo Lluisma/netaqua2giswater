@@ -4,7 +4,7 @@ CREATE OR REPLACE VIEW V_EDIT_MAN_WJOIN AS
 
 SELECT  T1.ID_ESCO                           connec_id,
         T1.CODI_COM                          code,
-        T1.COTA_APROX                        elevation,
+        CAST(null AS NUMBER)                 elevation,
         T1.FONDARIA                          depth,
         'ESCOMESA'                           connectype_id,
         CASE 
