@@ -93,8 +93,14 @@ CREATE OR REPLACE FORCE VIEW GW_MIGRA_NETSANEA.tmp_v_edit_man_gully_embornal AS
     NULL                                        AS GROOVE,
     NULL                                        AS SIPHON,
     SET_CONNEC_CAT( T1.MATERIAL_CONN, T1.SECCIO_CONN ) AS CONNEC_ARCCAT_ID,
-    T1.LONGITUD_CONN                            AS CONNEC_LENGTH,
-    T1.SONDA_CONN                               AS CONNEC_DEPTH,
+    CASE T1.LONGITUD_CONN
+      WHEN 0 THEN CAST(null AS NUMBER)
+      ELSE T1.LONGITUD_CONN 
+    END                                         AS CONNEC_LENGTH,
+    CASE T1.SONDA_CONN
+      WHEN 0 THEN CAST(null AS NUMBER)
+      ELSE T1.SONDA_CONN
+    END                                         AS CONNEC_DEPTH,
     'true'                                      AS PUBLISH,
     'true'                                      AS INVENTORY,
     'false'                                     AS UNCERTAIN,
@@ -200,8 +206,14 @@ CREATE OR REPLACE FORCE VIEW GW_MIGRA_NETSANEA.tmp_v_edit_man_gully_reixa AS
     NULL                                        AS GROOVE,
     NULL                                        AS SIPHON,
     SET_CONNEC_CAT( T1.MATERIAL_CONN, T1.SECCIO_CONN ) AS CONNEC_ARCCAT_ID,
-    T1.LONGITUD_CONN                            AS CONNEC_LENGTH,
-    T1.SONDA_CONN                               AS CONNEC_DEPTH,
+    CASE T1.LONGITUD_CONN
+      WHEN 0 THEN CAST(null AS NUMBER)
+      ELSE T1.LONGITUD_CONN 
+    END                                         AS CONNEC_LENGTH,
+    CASE T1.SONDA_CONN
+      WHEN 0 THEN CAST(null AS NUMBER)
+      ELSE T1.SONDA_CONN
+    END                                         AS CONNEC_DEPTH,
     'true'                                      AS PUBLISH,
     'true'                                      AS INVENTORY,
     'false'                                     AS UNCERTAIN,
