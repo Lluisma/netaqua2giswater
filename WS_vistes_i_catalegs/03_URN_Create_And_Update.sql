@@ -623,7 +623,7 @@ BEGIN
              --|| '  WHERE  ' || schema1 || '.amsa_urn_element.id_vell  = ' || schema1 || '.element_x_node.element_id '
              || '  FROM   ' || schema1 || '.amsa_urn '
              || '  WHERE  ' || schema1 || '.amsa_urn.nodetype_id = ''element'' '
-             || '  WHERE  ' || schema1 || '.amsa_urn.id_element  = ' || schema1 || '.element_x_node.element_id '
+             || '    AND  ' || schema1 || '.amsa_urn.id_element  = ' || schema1 || '.element_x_node.element_id '
              || '  RETURNING 1) '
              || 'SELECT count(*) FROM rows';
 
