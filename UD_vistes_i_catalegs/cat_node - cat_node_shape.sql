@@ -61,13 +61,13 @@ CREATE OR REPLACE VIEW CAT_NODE AS
                ELSE POU_SEC
              END                              AS SHAPE,
              -- GEOKETTLE TÉ PROBLEMES AMB SEPARADOR DE DECIMALS PER APLICAR TO_NUMBER 
-	           CASE INSTR( POU_DIM, 'x')
+	           CASE INSTR( UPPER(POU_DIM), 'X')
                WHEN 0 THEN TO_NUMBER( POU_DIM, '99999D99', 'NLS_NUMERIC_CHARACTERS=''.,''' ) * 100
-               ELSE        TO_NUMBER( SUBSTR( POU_DIM, 0, INSTR( POU_DIM, 'x')-1), '99999D99', 'NLS_NUMERIC_CHARACTERS=''.,''' ) * 100
+               ELSE        TO_NUMBER( SUBSTR( POU_DIM, 0, INSTR( UPPER(POU_DIM), 'X')-1), '99999D99', 'NLS_NUMERIC_CHARACTERS=''.,''' ) * 100
              END                              AS geom1,
              CASE INSTR( POU_DIM, 'x')
                WHEN 0 THEN null
-               ELSE        TO_NUMBER( SUBSTR( POU_DIM, INSTR( POU_DIM, 'x')+1), '99999D99', 'NLS_NUMERIC_CHARACTERS=''.,''' ) * 100
+               ELSE        TO_NUMBER( SUBSTR( POU_DIM, INSTR( UPPER(POU_DIM), 'X')+1), '99999D99', 'NLS_NUMERIC_CHARACTERS=''.,''' ) * 100
              END                              AS geom2,
              INITCAP(POU_MAT)                 AS descr_mat,
              INITCAP(POU_SEC)                 AS descr_sec,
