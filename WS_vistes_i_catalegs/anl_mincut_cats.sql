@@ -1,13 +1,13 @@
  
 CREATE OR REPLACE VIEW GW_MIGRA_NETAQUA.ANL_MINCUT_CAT_CAUSE AS
 
-    SELECT 'Fortuïta'        AS "id",
-           NULL              AS descript
+    SELECT 1                 AS "id",
+           'Fortuïta'        AS descript
     FROM   DUAL
     UNION
-    SELECT 'Programada', NULL FROM DUAL
+    SELECT 2, 'Programada'  FROM DUAL
     UNION
-    SELECT 'Provocada',  NULL FROM DUAL;
+    SELECT 3, 'Provocada'   FROM DUAL;
 
 CREATE OR REPLACE VIEW GW_MIGRA_NETAQUA.ANL_MINCUT_CAT_CLASS AS
 
