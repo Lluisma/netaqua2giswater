@@ -138,15 +138,25 @@ CREATE OR REPLACE FUNCTION ud_migra.bulk_notfk( schema2 TEXT )
 RETURNS TEXT AS $$
 DECLARE
   r record;
+  compt             INTEGER DEFAULT 0;
 BEGIN
 
-  FOR r IN (SELECT table_name, constraint_name FROM information_schema.table_constraints WHERE table_schema = schema2) LOOP
-    RAISE INFO '%','dropping '||r.constraint_name;
+  FOR r IN (SELECT table_name, constraint_name 
+            FROM   information_schema.table_constraints 
+            WHERE  table_schema = schema2
+              AND  constraint_type = 'FOREIGN KEY' ) LOOP
+    
     EXECUTE 'ALTER TABLE ' || schema2 || '.' || r.table_name || ' DROP CONSTRAINT ' || r.constraint_name;
+    RAISE INFO '%','dropping '||r.constraint_name;
+    compt := compt + 1;  
+
   END LOOP;
+
+  RETURN compt || ' constraints eliminades';
 
 END
 $$ LANGUAGE plpgsql;
+
 
 
 
