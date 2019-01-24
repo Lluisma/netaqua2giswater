@@ -55,7 +55,7 @@ CREATE OR REPLACE FORCE VIEW v_edit_man_conduit AS
          CAST(null AS NUMBER)                         AS cat_geom2,
          CAST(null AS NUMBER)                         AS gis_length,
          T1.LONGITUD                                  AS custom_length,
-         NULL                                         AS epa_type,
+         'CONDUIT'                                    AS epa_type,
          1                                            AS sector_id,
          CAST(null AS NUMBER)                         AS macrosector_id,
          SET_STATE( T1.ESTAT )                        AS STATE,
