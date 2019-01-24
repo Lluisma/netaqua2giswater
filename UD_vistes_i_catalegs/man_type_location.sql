@@ -20,7 +20,7 @@ CREATE OR REPLACE VIEW MAN_TYPE_LOCATION AS
     SELECT  'CONEGUDA', 'NODE', 'NETINIT' || chr(38) || 'JUNCTION', 'Ubicació coneguda'
     FROM DUAL
     UNION
-    SELECT  'DESCCONEGUDA', 'NODE', 'NETINIT' || chr(38) || 'JUNCTION', 'Ubicació desconeguda'
+    SELECT  'DESCONEGUDA', 'NODE', 'NETINIT' || chr(38) || 'JUNCTION', 'Ubicació desconeguda'
     FROM DUAL
 
     UNION
