@@ -1,13 +1,16 @@
 
 CREATE OR REPLACE VIEW DMA AS
-  SELECT TO_NUMBER(SET_DMA( T1.SUBSECTOR_ID ))     AS dma_id, 
+  SELECT TO_NUMBER(SET_DMA( T1.SUBSECTOR_ID ))     AS dma_id,
          T1.SUBSECTOR_ID                           AS "name",
          1                                         AS expl_id,
          TO_NUMBER(SET_MACRODMA( T1.SECTOR_ID ))   AS macrodma_id,
          'Mataró - ' || T1.SUBSECTOR_ID            AS descript,
          'true'                                    AS undelete,
          SDO_GEOMETRY(2007, 25831, NULL, T1.SUBSECTOR_GEO.SDO_ELEM_INFO, T1.SUBSECTOR_GEO.SDO_ORDINATES) AS the_geom
-  FROM   NS_MATARO.BASE_CL_SUBSECTOR T1;
+  FROM   NS_MATARO.BASE_CL_SUBSECTOR T1
+  WHERE  T1.SUBSECTOR_ID <> '-'
+  UNION ALL
+  SELECT * FROM DMA_0;
 
 
 CREATE OR REPLACE VIEW MACRODMA AS
