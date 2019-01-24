@@ -243,66 +243,47 @@ CREATE OR REPLACE VIEW ud_migra.amsa_ctrl_connec_gully_no_link AS
 
 
 
-/*
 CREATE OR REPLACE VIEW ud_migra.amsa_ctrl_no_geom AS
 
   SELECT 'LINK' TIPUS, LINK_ID::character varying(6) CODE, EXPL_ID FROM ud_migra.v_edit_link WHERE the_geom IS NULL
   UNION
-  SELECT 'LEXPANSIONTANK' TIPUS, CODE, EXPL_ID FROM ud_migra.v_edit_man_expansiontank WHERE the_geom IS NULL
+  SELECT 'CHAMBER' TIPUS, CODE, EXPL_ID FROM ud_migra.v_edit_man_chamber WHERE the_geom IS NULL
   UNION
-  SELECT 'FILTER' TIPUS, CODE, EXPL_ID FROM ud_migra.v_edit_man_filter WHERE the_geom IS NULL
+  SELECT 'CONDUIT' TIPUS, CODE, EXPL_ID FROM ud_migra.v_edit_man_conduit WHERE the_geom IS NULL
   UNION
-  SELECT 'FLEXUNION' TIPUS, CODE, EXPL_ID FROM ud_migra.v_edit_man_flexunion WHERE the_geom IS NULL
+  SELECT 'CONNEC' TIPUS, CODE, EXPL_ID FROM ud_migra.v_edit_man_connec WHERE the_geom IS NULL
   UNION
-  SELECT 'FOUNTAIN' TIPUS, CODE, EXPL_ID FROM ud_migra.v_edit_man_fountain WHERE the_geom IS NULL
+  SELECT 'GULLY' TIPUS, CODE, EXPL_ID FROM ud_migra.v_edit_man_gully WHERE the_geom IS NULL
   UNION
-  SELECT 'GREENTAP' TIPUS, CODE, EXPL_ID FROM ud_migra.v_edit_man_greentap WHERE the_geom IS NULL
+  SELECT 'GULLY_POL' TIPUS, CODE, EXPL_ID FROM ud_migra.v_edit_man_gully WHERE the_geom IS NULL
   UNION
-  SELECT 'HYDRANT' TIPUS, CODE, EXPL_ID FROM ud_migra.v_edit_man_hydrant WHERE the_geom IS NULL
-  UNION
-  SELECT 'JUNCTINO' TIPUS, CODE, EXPL_ID FROM ud_migra.v_edit_man_junction WHERE the_geom IS NULL
+  SELECT 'JUNCTION' TIPUS, CODE, EXPL_ID FROM ud_migra.v_edit_man_junction WHERE the_geom IS NULL
   UNION
   SELECT 'MANHOLE' TIPUS, CODE, EXPL_ID FROM ud_migra.v_edit_man_manhole WHERE the_geom IS NULL
   UNION
-  SELECT 'METER' TIPUS, CODE, EXPL_ID FROM ud_migra.v_edit_man_meter WHERE the_geom IS NULL
-  UNION
   SELECT 'NETELEMENT' TIPUS, CODE, EXPL_ID FROM ud_migra.v_edit_man_netelement WHERE the_geom IS NULL
   UNION
-  SELECT 'NETSAMPLEPOINT' TIPUS, CODE, EXPL_ID FROM ud_migra.v_edit_man_netsamplepoint WHERE the_geom IS NULL
+  SELECT 'NETGULLY' TIPUS, CODE, EXPL_ID FROM ud_migra.v_edit_man_netgully WHERE the_geom IS NULL
   UNION
-  SELECT 'NETWJOIN' TIPUS, CODE, EXPL_ID FROM ud_migra.v_edit_man_netwjoin WHERE the_geom IS NULL
+  SELECT 'NETINIT' TIPUS, CODE, EXPL_ID FROM ud_migra.v_edit_man_netinit WHERE the_geom IS NULL
   UNION
-  SELECT 'PIPE' TIPUS, CODE, EXPL_ID FROM ud_migra.v_edit_man_pipe WHERE the_geom IS NULL
+  SELECT 'OUTFALL' TIPUS, CODE, EXPL_ID FROM ud_migra.v_edit_man_outfall WHERE the_geom IS NULL
   UNION
-  SELECT 'PUMP' TIPUS, CODE, EXPL_ID FROM ud_migra.v_edit_man_pump WHERE the_geom IS NULL
+  SELECT 'SIPHON' TIPUS, CODE, EXPL_ID FROM ud_migra.v_edit_man_siphon WHERE the_geom IS NULL
   UNION
-  SELECT 'REDUCTION' TIPUS, CODE, EXPL_ID FROM ud_migra.v_edit_man_reduction WHERE the_geom IS NULL
-  UNION
-  SELECT 'REGISTER' TIPUS, CODE, EXPL_ID FROM ud_migra.v_edit_man_register WHERE the_geom IS NULL
-  UNION
-  SELECT 'SOURCE' TIPUS, CODE, EXPL_ID FROM ud_migra.v_edit_man_source WHERE the_geom IS NULL
-  UNION
-  SELECT 'TANK' TIPUS, CODE, EXPL_ID FROM ud_migra.v_edit_man_tank WHERE the_geom IS NULL
-  UNION
-  SELECT 'TAP' TIPUS, CODE, EXPL_ID FROM ud_migra.v_edit_man_tap WHERE the_geom IS NULL
+  SELECT 'STORAGE' TIPUS, CODE, EXPL_ID FROM ud_migra.v_edit_man_storage WHERE the_geom IS NULL
   UNION
   SELECT 'VALVE' TIPUS, CODE, EXPL_ID FROM ud_migra.v_edit_man_valve WHERE the_geom IS NULL
   UNION
   SELECT 'VARC' TIPUS, CODE, EXPL_ID FROM ud_migra.v_edit_man_varc WHERE the_geom IS NULL
   UNION
-  SELECT 'WATERWELL' TIPUS, CODE, EXPL_ID FROM ud_migra.v_edit_man_waterwell WHERE the_geom IS NULL
+  SELECT 'WACCEL' TIPUS, CODE, EXPL_ID FROM ud_migra.v_edit_man_waccel WHERE the_geom IS NULL
   UNION
-  SELECT 'WJOIN' TIPUS, CODE, EXPL_ID FROM ud_migra.v_edit_man_wjoin WHERE the_geom IS NULL
+  SELECT 'WJUMP' TIPUS, CODE, EXPL_ID FROM ud_migra.v_edit_man_wjump WHERE the_geom IS NULL
   UNION
-  SELECT 'WTP' TIPUS, CODE, EXPL_ID FROM ud_migra.v_edit_man_wtp WHERE the_geom IS NULL
-  UNION
-  SELECT 'POND' TIPUS, pond_id::character varying(6) CODE, EXPL_ID FROM ud_migra.v_edit_pond WHERE the_geom IS NULL
-  UNION
-  SELECT 'POOL' TIPUS, pool_id::character varying(6) CODE, EXPL_ID FROM ud_migra.v_edit_pool WHERE the_geom IS NULL
+  SELECT 'WWTP' TIPUS, CODE, EXPL_ID FROM ud_migra.v_edit_man_wwtp WHERE the_geom IS NULL
   UNION
   SELECT 'SAMPLEPOINT' TIPUS, CODE, EXPL_ID FROM ud_migra.v_edit_samplepoint WHERE the_geom IS NULL
   ORDER BY TIPUS, CODE;
-
-*/
 
 
