@@ -307,7 +307,7 @@ BEGIN
              || '  FROM   ' || schema1 || '.amsa_urn '
              || '  WHERE  ' || schema1 || '.amsa_urn.id_element  = ' || schema1 || '.v_edit_man_conduit.node_1 '
              || '    AND  ' || schema1 || '.amsa_urn.id_amsa     = ' || schema1 || '.v_edit_man_conduit.node_1 '
-             || '    AND  ' || schema1 || '.amsa_urn.nodetype_id NOT IN (''TRAM'',''EMBORNAL'',''REIXA'') '
+             || '    AND  ' || schema1 || '.amsa_urn.nodetype_id NOT IN (''TRAM'',''CLAVEGUERO'',''EMBORNAL'',''REIXA'',''ELEMENT'',''element'') '
              || '    AND  ' || schema1 || '.v_edit_man_conduit.node_1 IS NOT NULL '
              || '  RETURNING 1) '
              || 'SELECT count(*) FROM rows';
@@ -321,7 +321,7 @@ BEGIN
              || '  FROM   ' || schema1 || '.amsa_urn '
              || '  WHERE  ' || schema1 || '.amsa_urn.id_element  = ' || schema1 || '.v_edit_man_conduit.node_2 '
              || '    AND  ' || schema1 || '.amsa_urn.id_amsa     = ' || schema1 || '.v_edit_man_conduit.node_2 '
-             || '    AND  ' || schema1 || '.amsa_urn.nodetype_id NOT IN (''TRAM'',''EMBORNAL'',''REIXA'') '
+             || '    AND  ' || schema1 || '.amsa_urn.nodetype_id NOT IN (''TRAM'',''CLAVEGUERO'',''EMBORNAL'',''REIXA'',''ELEMENT'',''element'') '
              || '    AND  ' || schema1 || '.v_edit_man_conduit.node_2 IS NOT NULL '
              || '  RETURNING 1) '
              || 'SELECT count(*) FROM rows';
