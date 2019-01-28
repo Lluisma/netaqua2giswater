@@ -287,3 +287,21 @@ CREATE OR REPLACE VIEW ud_migra.amsa_ctrl_no_geom AS
   ORDER BY TIPUS, CODE;
 
 
+
+CREATE OR REPLACE FUNCTION ud_migra.update_arc_sys_fields( ini integer, fin integer) 
+RETURNS TEXT AS 
+$$
+
+BEGIN
+
+  FOR i IN ini..fin LOOP
+
+    EXECUTE 'UPDATE ud.arc SET elev1 = elev1 WHERE state=1 AND arc_id::bigint = ' || i;
+   
+  END LOOP;
+
+  RETURN 'Totes els arcs en alta actualitzats';
+      
+END;
+
+$$ LANGUAGE plpgsql;
