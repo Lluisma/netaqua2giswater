@@ -88,13 +88,11 @@ BEGIN
   WHERE  table_schema = schema1
     AND  (   table_name like 'cat_%'
           or table_name like 'element_%' 
-          --or (table_name like 'ext_%' and table_name not like 'ext_rtc_%' and table_name not like 'ext_cat_%')
           or table_name like 'man_type_%' 
           or table_name like 'man_addfields_%' 
           or table_name like 'value_%' 
           or table_name in ('arc_type', 'connec_type', 'element_type', 'node_type')
           or table_name in ('exploitation', 'macroexploitation', 'sector', 'macrosector', 'dma', 'macrodma', 'plan_psector')
-          or table_name in ('selector_expl', 'selector_state', 'selector_hydrometer', 'config_param_user')
           or table_name like 'anl_mincut_cat_%'
           or table_name in ('anl_mincut_inlet_x_exploitation', 'anl_mincut_result_cat', 'anl_mincut_result_connec',
                             'anl_mincut_selector_valve', 'anl_mincut_result_hydrometer')

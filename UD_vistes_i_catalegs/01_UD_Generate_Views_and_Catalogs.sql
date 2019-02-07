@@ -93,14 +93,12 @@ BEGIN
   WHERE  table_schema = schema1
     AND  (   table_name LIKE 'cat_%'
           OR table_name LIKE 'element_%' 
-          --OR (table_name LIKE 'ext_%' and table_name not like 'ext_rtc_%' and table_name not like 'ext_cat_%')
           OR table_name LIKE 'man_type_%' 
           OR table_name LIKE 'man_addfields_%' 
           OR table_name LIKE 'value_%' 
           OR table_name IN ('arc_type', 'connec_type', 'element_type', 'gully_type', 'node_type')
           OR table_name IN ('exploitation', 'macroexploitation', 'sector', 'macrosector', 'dma', 'macrodma', 'subcatchment', 'plan_psector')
-          OR table_name IN ('selector_expl', 'selector_state', 'config_param_user')
-               )
+         )
     ORDER BY table_name
   LOOP
     sql_drop := 'DROP TABLE IF EXISTS ' || schema2 || '.' || rec.table_name;
