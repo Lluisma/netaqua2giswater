@@ -96,7 +96,7 @@ CREATE OR REPLACE VIEW TMP_V_EDIT_MAN_VALVE_VALV AS
          T1.PRESSIO_EN                  pression_entry,
          T1.PRESSIO_SO                  pression_exit,
          T1.FONDARIA_EIX                depth_valveshaft,
-         T1.SITUACIO_REGU               regulator_situation,
+         REPLACE(T1.SITUACIO_REGU,',1','')  regulator_situation,
          T1.UBICACIO_REGU               regulator_location,
          T1.OBS_REGU                    regulator_observ,
          null                           lin_meters,
