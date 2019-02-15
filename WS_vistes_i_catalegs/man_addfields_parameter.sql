@@ -59,10 +59,10 @@ CREATE OR REPLACE VIEW MAN_ADDFIELDS_PARAMETER AS
 
 	UNION
 
-	SELECT	11, 'vreg_dynamics',   'VALVULA',  'false', 'numeric', 10, 5,    null, 'Reguladora: Dinàmica (Kg/cm²)', 'QLineEdit', null, null, null, null
+	SELECT	11, 'vreg_dynamics',   'VREGULADORA',  'false', 'numeric', 10, 5,    null, 'Dinàmica (Kg/cm²)', 'QLineEdit', null, null, null, null
 	FROM DUAL
 	UNION  
-	SELECT  12, 'vreg_filter',     'VALVULA',  'false', 'boolean',  2, null, null, 'Reguladora: Filtre',            'QCheckBox', null, null, null, null
+	SELECT  12, 'vreg_filter',     'VREGULADORA',  'false', 'boolean',  2, null, null, 'Filtre',            'QCheckBox', null, null, null, null
 	FROM DUAL
 
 	ORDER BY 1;	
