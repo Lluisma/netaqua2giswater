@@ -6,7 +6,10 @@ CREATE OR REPLACE VIEW V_EDIT_MAN_WATERWELL AS
            WHEN 37 THEN 'SANT_JAUME'
            ELSE CAST(T1.CODI_POU AS VARCHAR2(16))
          END                            code,
-         T1.COTA                        elevation,
+         CASE T1.COTA
+           WHEN 0 THEN NULL
+           ELSE T1.COTA
+         END                            elevation,
          CAST(null AS NUMBER)           depth,
          'POU'                          nodetype_id,
          'POU_XX'                       nodecat_id,
