@@ -364,7 +364,50 @@ CREATE OR REPLACE VIEW TMP_V_EDIT_ELEMENT_ARQUETA AS
           null                    undelete,
           1                       expl_id
   FROM NA_MATARO.NA_V_VENT T1
-  WHERE T1.TRAPA IS NOT NULL;
+  WHERE T1.TRAPA IS NOT NULL
+  
+  UNION
+  
+  SELECT  'ARQL_1_' || T1.ID_VALV element_id,
+          'ARQL_1_' || T1.ID_VALV code,
+          CASE T1.ARQUETA
+            WHEN 'AL' THEN 'X-XX'
+            ELSE T1.ARQUETA
+          END                     elementcat_id,
+          'ARQUETA'               elementtype_id,
+          null                    serial_number,
+          CASE T1.ESTAT
+            WHEN 'A' THEN 1
+            WHEN 'B' THEN 0
+            ELSE -1
+          END                     state,
+          CAST(null AS SMALLINT)  state_type,
+          null                    num_elements,
+          null                    observ,
+          null                    "comment",
+          null                    function_type,
+          null                    category_type,
+          null                    location_type,
+          null                    fluid_type,
+          null                    workcat_id,
+          null                    workcat_id_end,
+          null                    buildercat_id,
+          CAST(null AS DATE)      builtdate,
+          CAST(null AS DATE)      enddate,
+          null                    ownercat_id,
+          0                       rotation,
+          '-'                     link,
+          null                    verified,
+          null                    the_geom,
+          null                    label_x,
+          null                    label_y,
+          0                       label_rotation,
+          'true'                  publish,
+          'true'                  inventory,
+          null                    undelete,
+          1                       expl_id
+  FROM NA_MATARO.NA_V_VALV T1
+  WHERE T1.ARQUETA IS NOT NULL;
 
 	
 	
