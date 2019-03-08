@@ -16,6 +16,9 @@ CREATE OR REPLACE VIEW GW_MIGRA_NETAQUA.ELEMENT_TYPE AS
 	UNION
 	SELECT	'PORTELLA',    'true', 'true', 'Portella', null
 	FROM DUAL
+  UNION
+	SELECT	'PLACA',       'true', 'true', 'Placa Hidrant', null
+	FROM DUAL
 	UNION
 	SELECT	'ANALITZADOR', 'true', 'true', 'Analitzador', null
 	FROM DUAL

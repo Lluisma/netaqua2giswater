@@ -1,5 +1,5 @@
 
-CREATE OR REPLACE VIEW ELEMENT_X_NODE AS
+CREATE OR REPLACE VIEW GW_MIGRA_NETAQUA.ELEMENT_X_NODE AS
 
   SELECT ROWNUM id, element_id, node_id 
   FROM (
@@ -10,6 +10,15 @@ CREATE OR REPLACE VIEW ELEMENT_X_NODE AS
             '1_HIDRANT_' || T1.ID_BINC       node_id
     FROM    NA_MATARO.NA_V_BINC T1
     WHERE   T1.TRAPA IS NOT NULL
+       
+    -- BINC : TRAPA
+
+    UNION
+
+    SELECT  'PLA_1_' || T1.ID_BINC           element_id,
+            '1_HIDRANT_' || T1.ID_BINC       node_id
+    FROM    NA_MATARO.NA_V_BINC T1
+    WHERE   T1.UBI_PLACA IS NOT NULL
        
     -- VENT : TRAPA
     

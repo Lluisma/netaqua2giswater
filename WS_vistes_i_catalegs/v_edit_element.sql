@@ -1,6 +1,6 @@
 
 
-CREATE OR REPLACE VIEW TMP_V_EDIT_ELEMENT_AIXETA AS
+CREATE OR REPLACE VIEW GW_MIGRA_NETAQUA.TMP_V_EDIT_ELEMENT_AIXETA AS
   
   SELECT  'AIX_1_' || T1.ID_FONT  element_id,
           'AIX_1_' || T1.ID_FONT  code,
@@ -49,7 +49,7 @@ CREATE OR REPLACE VIEW TMP_V_EDIT_ELEMENT_AIXETA AS
   WHERE AIXETA IS NOT NULL OR AIX_ROSC IS NOT NULL OR AIX_NUME IS NOT NULL;
   
   
-CREATE OR REPLACE VIEW TMP_V_EDIT_ELEMENT_ARQFONT AS
+CREATE OR REPLACE VIEW GW_MIGRA_NETAQUA.TMP_V_EDIT_ELEMENT_ARQFONT AS
   
   SELECT  'ARF_1_' || T1.ID_FONT  element_id,
           'ARF_1_' || T1.ID_FONT  code,
@@ -96,7 +96,7 @@ CREATE OR REPLACE VIEW TMP_V_EDIT_ELEMENT_ARQFONT AS
   
 
 
-CREATE OR REPLACE VIEW TMP_V_EDIT_ELEMENT_PORTELLA AS
+CREATE OR REPLACE VIEW GW_MIGRA_NETAQUA.TMP_V_EDIT_ELEMENT_PORTELLA AS
   
   SELECT  'POR1_1_' || T1.ID_ESCO element_id,
           'POR1_1_' || T1.ID_ESCO code,
@@ -239,7 +239,7 @@ CREATE OR REPLACE VIEW TMP_V_EDIT_ELEMENT_PORTELLA AS
   
 
 
-CREATE OR REPLACE VIEW TMP_V_EDIT_ELEMENT_ARQUETA AS
+CREATE OR REPLACE VIEW GW_MIGRA_NETAQUA.TMP_V_EDIT_ELEMENT_ARQUETA AS
   
   SELECT  'ARQ_1_' || T1.ID_VDES  element_id,
           'ARQ_1_' || T1.ID_VDES  code,
@@ -409,9 +409,48 @@ CREATE OR REPLACE VIEW TMP_V_EDIT_ELEMENT_ARQUETA AS
   FROM NA_MATARO.NA_V_VALV T1
   WHERE T1.ARQUETA IS NOT NULL;
 
+
+CREATE OR REPLACE VIEW GW_MIGRA_NETAQUA.TMP_V_EDIT_ELEMENT_PLACA AS
+  SELECT  'PLA_1_' || T1.ID_BINC  element_id,
+          'PLA_1_' || T1.ID_BINC  code,
+          'PLA-XX'                elementcat_id,
+          'PLACA'                 elementtype_id,
+          null                    serial_number,
+          CASE T1.ESTAT
+            WHEN 'A' THEN 1
+            WHEN 'B' THEN 0
+            ELSE -1
+          END                     state,
+          CAST(null AS SMALLINT)  state_type,
+          null                    num_elements,
+          null                    observ,
+          null                    "comment",
+          null                    function_type,
+          null                    category_type,
+          T1.UBI_PLACA            location_type,
+          null                    fluid_type,
+          null                    workcat_id,
+          null                    workcat_id_end,
+          null                    buildercat_id,
+          CAST(null AS DATE)      builtdate,
+          CAST(null AS DATE)      enddate,
+          null                    ownercat_id,
+          0                       rotation,
+          '-'                     link,
+          null                    verified,
+          null                    the_geom,
+          null                    label_x,
+          null                    label_y,
+          0                       label_rotation,
+          'true'                  publish,
+          'true'                  inventory,
+          null                    undelete,
+          1                       expl_id
+  FROM NA_MATARO.NA_V_BINC T1
+  WHERE T1.UBI_PLACA IS NOT NULL;	
 	
-	
-CREATE OR REPLACE VIEW V_EDIT_ELEMENT AS
+  
+CREATE OR REPLACE VIEW GW_MIGRA_NETAQUA.V_EDIT_ELEMENT AS
 
     SELECT * FROM TMP_V_EDIT_ELEMENT_AIXETA
     UNION
@@ -419,5 +458,7 @@ CREATE OR REPLACE VIEW V_EDIT_ELEMENT AS
     UNION
     SELECT * FROM TMP_V_EDIT_ELEMENT_ARQUETA
     UNION
-    SELECT * FROM TMP_V_EDIT_ELEMENT_PORTELLA;
+    SELECT * FROM TMP_V_EDIT_ELEMENT_PORTELLA
+    UNION
+    SELECT * FROM TMP_V_EDIT_ELEMENT_PLACA;
   
