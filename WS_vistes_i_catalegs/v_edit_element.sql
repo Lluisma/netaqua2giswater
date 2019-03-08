@@ -427,7 +427,10 @@ CREATE OR REPLACE VIEW GW_MIGRA_NETAQUA.TMP_V_EDIT_ELEMENT_PLACA AS
           null                    "comment",
           null                    function_type,
           null                    category_type,
-          T1.UBI_PLACA            location_type,
+          CASE T1.UBI_PLACA
+            WHEN 'TANCA MET.' THEN 'TANCA'
+            ELSE T1.UBI_PLACA
+          END                     location_type,
           null                    fluid_type,
           null                    workcat_id,
           null                    workcat_id_end,
