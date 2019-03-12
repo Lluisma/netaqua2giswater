@@ -22,17 +22,17 @@ CREATE OR REPLACE VIEW GW_MIGRA_NETAQUA.MAN_TYPE_FUNCTION AS
    
     UNION   
     
-    SELECT 'OBR', 'CONNEC', 'ESCOMESA', 'Obres' FROM DUAL
+    SELECT 'OBR', 'CONNEC', 'WJOIN', 'Obres' FROM DUAL
     UNION
-    SELECT 'INC', 'CONNEC', 'ESCOMESA', 'Incendis' FROM DUAL
+    SELECT 'INC', 'CONNEC', 'WJOIN', 'Incendis' FROM DUAL
     UNION
-    SELECT 'RAP', 'CONNEC', 'ESCOMESA', 'Reg Ajuntament Parcs' FROM DUAL
+    SELECT 'RAP', 'CONNEC', 'WJOIN', 'Reg Ajuntament Parcs' FROM DUAL
     UNION
-    SELECT 'RRP', 'CONNEC', 'ESCOMESA', 'Reg Privat' FROM DUAL
+    SELECT 'RRP', 'CONNEC', 'WJOIN', 'Reg Privat' FROM DUAL
     UNION
-    SELECT 'FOP', 'CONNEC', 'ESCOMESA', 'Font Pública' FROM DUAL
+    SELECT 'FOP', 'CONNEC', 'WJOIN', 'Font Pública' FROM DUAL
     UNION
-    SELECT 'RAA', 'CONNEC', 'ESCOMESA', 'Reg Ajuntament Altres' FROM DUAL  
+    SELECT 'RAA', 'CONNEC', 'WJOIN', 'Reg Ajuntament Altres' FROM DUAL  
 
 		ORDER BY 2, 3, 1
 

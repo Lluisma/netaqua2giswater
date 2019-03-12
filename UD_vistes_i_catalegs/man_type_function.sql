@@ -3,7 +3,7 @@
 -- CL_EMBORNAL.TIPUS  'D', 'S', 'X'
 -- CL_REIXA.TIPUS     'D', 'S', 'X'
 
-CREATE OR REPLACE VIEW MAN_TYPE_FUNCTION AS 
+CREATE OR REPLACE VIEW GW_MIGRA_NETSANEA.MAN_TYPE_FUNCTION AS 
 
 	SELECT	ROWNUM			          id,
           T1.*
@@ -25,13 +25,13 @@ CREATE OR REPLACE VIEW MAN_TYPE_FUNCTION AS
 
 		UNION
 		
-    SELECT 'D', 'GULLY', 'EMBORNAL' || chr(38) || 'REIXA', 'Directe'
+    SELECT 'D', 'GULLY', 'GULLY', 'Directe'
 		FROM 	DUAL
     UNION
-    SELECT 'S', 'GULLY', 'EMBORNAL' || chr(38) || 'REIXA', 'Sifònic'
+    SELECT 'S', 'GULLY', 'GULLY', 'Sifònic'
 		FROM 	DUAL
     UNION
-    SELECT 'X', 'GULLY', 'EMBORNAL' || chr(38) || 'REIXA', 'Desconegut'
+    SELECT 'X', 'GULLY', 'GULLY', 'Desconegut'
 		FROM 	DUAL
     
 		ORDER BY 2, 3, 1

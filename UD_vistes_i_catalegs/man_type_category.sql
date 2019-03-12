@@ -7,7 +7,7 @@
 -- CL_REIXA.TIPUS             'BR', 'R', 'X'
 
 
-CREATE OR REPLACE VIEW MAN_TYPE_CATEGORY AS 
+CREATE OR REPLACE VIEW GW_MIGRA_NETSANEA.MAN_TYPE_CATEGORY AS 
 
 	SELECT	ROWNUM			id,
 			T1.*
@@ -37,16 +37,16 @@ CREATE OR REPLACE VIEW MAN_TYPE_CATEGORY AS
     
     UNION
     
-    SELECT 'B', 'GULLY', 'EMBORNAL', 'Bústia'
+    SELECT 'B', 'GULLY', 'GULLY', 'Bústia'
     FROM DUAL
     UNION
-    SELECT 'BR', 'GULLY', 'EMBORNAL' || chr(38) || 'REIXA', 'Bústia Reixa'
+    SELECT 'BR', 'GULLY', 'GULLY', 'Bústia Reixa'
     FROM DUAL
     UNION
-    SELECT 'R', 'GULLY', 'EMBORNAL' || chr(38) || 'REIXA', 'Reixa'
+    SELECT 'R', 'GULLY', 'GULLY', 'Reixa'
     FROM DUAL
     UNION
-    SELECT 'X', 'GULLY', 'EMBORNAL' || chr(38) || 'REIXA', 'Desconegut'
+    SELECT 'X', 'GULLY', 'GULLY', 'Desconegut'
     FROM DUAL
        
 		ORDER BY 2, 3, 1
