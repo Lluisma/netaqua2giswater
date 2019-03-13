@@ -71,9 +71,11 @@ BEGIN
       AND  table_name LIKE 'amsa_cat%'
   LOOP
     RAISE NOTICE USING MESSAGE = rec.table_name;
-    sql_delete := 'DROP TABLE IF EXISTS ' || schema2 || '.' || rec.table_name;
+--    sql_delete := 'DROP TABLE IF EXISTS ' || schema2 || '.' || rec.table_name;
+    sql_delete := 'DELETE FROM ' || schema2 || '.' || rec.table_name;
     EXECUTE sql_delete;
-    RAISE NOTICE USING MESSAGE = '... dropped';
+--    RAISE NOTICE USING MESSAGE = '... dropped';
+    RAISE NOTICE USING MESSAGE = '... deleted';
     compt := compt + 1;  
 
   END LOOP;
@@ -210,7 +212,8 @@ BEGIN
 
     RAISE NOTICE USING MESSAGE = rec.table_name;
 
-    sql_insert := 'CREATE TABLE ' || schema2 || '.' || rec.table_name || ' AS SELECT * FROM ' || schema1 || '.' || rec.table_name;
+--    sql_insert := 'CREATE TABLE ' || schema2 || '.' || rec.table_name || ' AS SELECT * FROM ' || schema1 || '.' || rec.table_name;
+    sql_insert := 'INSERT INTO ' || schema2 || '.' || rec.table_name || ' SELECT * FROM ' || schema1 || '.' || rec.table_name;
     EXECUTE sql_insert;
 
 
