@@ -413,7 +413,7 @@ CREATE OR REPLACE VIEW GW_MIGRA_NETAQUA.TMP_V_EDIT_ELEMENT_ARQUETA AS
 CREATE OR REPLACE VIEW GW_MIGRA_NETAQUA.TMP_V_EDIT_ELEMENT_PLACA AS
   SELECT  'PLA_1_' || T1.ID_BINC  element_id,
           'PLA_1_' || T1.ID_BINC  code,
-          'PLA-XX'                elementcat_id,
+          'PLA_XX'                elementcat_id,
           'PLACA'                 elementtype_id,
           null                    serial_number,
           CASE T1.ESTAT
