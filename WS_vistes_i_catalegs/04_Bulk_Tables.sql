@@ -62,13 +62,13 @@ BEGIN
 
   StartTime := clock_timestamp();
 
-  -- Elimina (si existeixen) les taules de catàlegs específics d'AMSA (amsa_cat)
+  -- Elimina (si existeixen) les taules de catàlegs específics d'AMSA (amsa_cat) o catàlegs/selectors actualitzats via trigger
 
   FOR rec IN
     SELECT table_name 
     FROM   INFORMATION_SCHEMA.tables 
     WHERE  table_schema = schema2
-      AND  table_name LIKE 'amsa_cat%'
+      AND  (table_name LIKE 'amsa_cat%' OR table_name IN ('selector_psector','inp_cat_mat_roughness'))
   LOOP
     RAISE NOTICE USING MESSAGE = rec.table_name;
 --    sql_delete := 'DROP TABLE IF EXISTS ' || schema2 || '.' || rec.table_name;
