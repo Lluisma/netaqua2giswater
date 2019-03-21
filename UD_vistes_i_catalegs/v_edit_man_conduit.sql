@@ -1,5 +1,5 @@
 
-CREATE OR REPLACE FORCE VIEW v_edit_man_conduit AS
+CREATE OR REPLACE FORCE VIEW GW_MIGRA_NETSANEA.V_EDIT_MAN_CONDUIT AS
 
   SELECT T1.ID_TRAM                                   AS arc_id,
          T1.ID_TRAM                                   AS code,
@@ -69,7 +69,10 @@ CREATE OR REPLACE FORCE VIEW v_edit_man_conduit AS
            --ELSE null
            ELSE 'false'
          END                                          AS inverted_slope,
-         TO_NUMBER( SET_DMA( T1.SUBSECTOR ) )         AS dma_id,
+         CASE
+           WHEN T1.SUBSECTOR IS NULL THEN 0
+           ELSE TO_NUMBER( SET_DMA( T1.SUBSECTOR ) )
+         END                                          AS dma_id,
          TO_NUMBER( SET_MACRODMA_GULLY( T1.SECTOR ) ) AS macrodma_id,
          NULL                                         AS soilcat_id,
          NULL                                         AS function_type,
