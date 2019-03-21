@@ -1,7 +1,7 @@
 
 -- NO S'APLIQUEN LES REGLES TOPOLÒGIQUES SOBRE ELS ELEMENTS DE BAIXA (igual que a NETAQUA)
 
-CREATE OR REPLACE VIEW V_EDIT_MAN_PIPE AS
+CREATE OR REPLACE VIEW GW_MIGRA_NETAQUA.V_EDIT_MAN_PIPE AS
 
 SELECT  T1.ID_TRAM                              arc_id,
         T1.ID_TRAM                              code,
@@ -78,7 +78,7 @@ SELECT  T1.ID_TRAM                              arc_id,
         '-'                                     cat_dnom,
         null                                    epa_type,
         CASE
-          WHEN T1.ZONA = 0 THEN NULL
+          WHEN T1.ZONA IS NULL THEN 0
           ELSE T1.ZONA
         END                                     sector_id,
         T9.MACROSECTOR_ID                       macrosector_id,
