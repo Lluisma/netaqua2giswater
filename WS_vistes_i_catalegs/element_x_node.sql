@@ -46,5 +46,14 @@ CREATE OR REPLACE VIEW GW_MIGRA_NETAQUA.ELEMENT_X_NODE AS
             '1_VALVULA_' || T1.ID_VALV       node_id
     FROM    NA_MATARO.NA_V_VALV T1
     WHERE   T1.ARQUETA IS NOT NULL
+      AND   T1.FUNCIO <> 'REGULADORA'
+      
+    UNION
+    
+    SELECT  'ARQL_1_' || T1.ID_VALV          element_id,
+            '1_VREGULADORA_' || T1.ID_VALV       node_id
+    FROM    NA_MATARO.NA_V_VALV T1
+    WHERE   T1.ARQUETA IS NOT NULL
+      AND   T1.FUNCIO = 'REGULADORA'
     
   );
