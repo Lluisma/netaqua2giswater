@@ -165,7 +165,7 @@ BEGIN
             WHERE  table_schema = schema2
               AND  constraint_type = 'FOREIGN KEY' ) LOOP
     
-    EXECUTE 'ALTER TABLE ' || schema2 || '.' || r.table_name || ' DROP CONSTRAINT ' || r.constraint_name;
+    EXECUTE 'ALTER TABLE ' || schema2 || '.' || r.table_name || ' DROP CONSTRAINT IF EXISTS ' || r.constraint_name;
     RAISE INFO '%','dropping '||r.constraint_name;
     compt := compt + 1;  
 
