@@ -23,7 +23,11 @@ CREATE OR REPLACE VIEW GW_MIGRA_NETAQUA.VALUE_STATE_TYPE AS
     FROM DUAL
     UNION
     SELECT  21, 2, 'PLANIFICAT',     'false', 'true'
+    FROM DUAL
+    UNION
+    SELECT  22, 2, 'FICTICI',        'false', 'true'
     FROM DUAL;
+
 
 
 -- CLAVEGUERAM 
@@ -32,7 +36,7 @@ CREATE OR REPLACE VIEW GW_MIGRA_NETSANEA.VALUE_STATE_TYPE AS
 	
     SELECT 0           	      AS id,
            0                  AS state,
-    	     'BAIXA'           	AS name,
+    	   'BAIXA'            AS name,
            'false'            AS is_operative,
            'false'            AS is_doable
     FROM DUAL
@@ -44,4 +48,7 @@ CREATE OR REPLACE VIEW GW_MIGRA_NETSANEA.VALUE_STATE_TYPE AS
     FROM DUAL
     UNION
     SELECT  21, 2, 'PLANIFICAT',     'false', 'true'
+    FROM DUAL
+    UNION
+    SELECT  22, 2, 'FICTICI',        'false', 'true'
     FROM DUAL;
